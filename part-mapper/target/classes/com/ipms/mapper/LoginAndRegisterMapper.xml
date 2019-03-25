@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ipms.mapper.LoginAndRegisterMapper">
+	
+	<sql id="selectAllColumn">
+		SELECT * FROM test_user
+	</sql>
+
+	<!-- 查询 -->
+	<select id="userLogin" parameterType="User" resultType="User">
+		<include refid="selectAllColumn"/>
+		<where>
+			<if test="username != null and username != ''"> <!-- 此处的username为User的属性而不是表中的列 -->
+				AND username = #{username}
+			</if>
+			<if test="password != null and password != ''">
+				AND password = #{password}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 添加注册用户 -->
+	<insert id="userRegister" parameterType="User">
+		<!-- 由于字段类型问题没有设置selectKey -->
+		INSERT INTO test_user
+		(user_id, username, password, name, sex, birthday) VALUES
+		(#{user_id}, #{username}, #{password}, #{name}, #{sex}, #{birthday})
+	</insert>
+	
+	<!-- 查看账号是否重复 -->
+	<select id="checkRepeat" parameterType="string" resultType="User">
+		<include refid="selectAllColumn"/>
+		<where>
+			username = #{username}
+		</where>
+	</select>
+	
+</mapper>

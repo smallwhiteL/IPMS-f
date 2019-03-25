@@ -1,0 +1,65 @@
+@media (min-width : 768px) {
+    .headerHeightAjustment {
+        height: 200px;
+    }
+    .left-part-welcome {
+        margin-top: 20%;
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .left-part-portrait {
+        /* background-color: rgb(91, 215, 253); */
+        height: 200px;
+        text-align: center;
+    }
+    .logo-part {
+        margin-top: 5%;
+        font-size: 35px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .right-part-back-to-home {
+        margin-top: 26%;
+        font-size: 25px;
+        text-align: right;
+    }
+    .right-part-logout {
+        margin-top: 26%;
+        font-size: 25px;
+    }
+}
+
+@media (min-width : 1200px) {
+    .headerHeightAjustment {
+        height: 113.15px;
+    }
+    .left-part-welcome {
+        margin-top: 4%;
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .left-part-portrait {
+        /* background-color: rgb(91, 215, 253); */
+        height: 113.15px;
+        text-align: center;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .logo-part {
+        margin-top: 5px;
+        font-size: 35px;
+        font-weight: bold;
+        text-align: center;
+    }
+    .right-part-back-to-home {
+        margin-top: 8%;
+        font-size: 25px;
+        text-align: right;
+    }
+    .right-part-logout {
+        margin-top: 8%;
+        font-size: 25px;
+    }
+}
