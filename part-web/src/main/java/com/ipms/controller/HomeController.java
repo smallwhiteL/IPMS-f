@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("home")
+@RequestMapping("/home")
 public class HomeController {
 	
 	// 登陆后的主页显示
@@ -25,5 +25,5 @@ public class HomeController {
 		// 回到登录页面
 		return "redirect:/";
 	}
-
+	
 }

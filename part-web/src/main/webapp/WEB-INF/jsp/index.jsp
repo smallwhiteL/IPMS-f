@@ -4,15 +4,14 @@
 <html style="height: 100%">
 <head>
 <title>IPMS-f</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 
 <!-- Own CSS -->
 <link href="${pageContext.request.contextPath}/css/index-style.css" rel="stylesheet">
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <!-- Title Icon -->
-<link href="${pageContext.request.contextPath}/images/lmmm.jpg" rel="shortcut icon">
-
+<link href="${pageContext.request.contextPath}/images/plan.jpg" rel="shortcut icon">
 <!-- JQuery (Before Bootstrap) -->
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <!-- Load Bootstrap Javascript Plugin -->
@@ -20,6 +19,13 @@
 
 </head>
 <body style="height: 100%; margin: auto; background: yellowgreen;">
+	
+	<%
+		// 判断session
+		if (session.getAttribute("loginUser") != null) {
+			session.invalidate();
+		}
+	%>
 
 	<!-- Header -->
 	<%@ include file="/WEB-INF/jsp/common/pageHeader.jsp" %>

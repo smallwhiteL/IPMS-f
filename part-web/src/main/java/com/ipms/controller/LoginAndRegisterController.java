@@ -24,7 +24,7 @@ public class LoginAndRegisterController {
 	
 	// 注册和登录页面显示
 	@RequestMapping("/form")
-	public String mainForm() {
+	public String mainForm(HttpServletRequest request) {
 		return "index";
 	}
 

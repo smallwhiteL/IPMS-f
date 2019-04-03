@@ -38,7 +38,7 @@
            </div>
            <div class="col-xs-4 right-part-logout">
 		        <c:if test="${not empty loginUser}">
-                	<a id="logout" href="${pageContext.request.contextPath}/home/logout">注销</a>
+                	<a id="logout" href="javascript:;">注销</a>
 	            </c:if>
            </div>
         </div>

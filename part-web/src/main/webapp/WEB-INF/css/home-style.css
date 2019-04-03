@@ -1,0 +1,204 @@
+/* 右侧用于添加计划的悬浮窗 */
+#add-plan-ul{
+    position:fixed;
+    top:55%;
+    right:50px;
+    width:15px;
+    z-index:400;
+    list-style-type: none;
+}
+#add-plan-ul li{height:50px;}
+#back-to-top{
+    display:block;
+    width:45px;
+    height:45px;
+    overflow:hidden;
+    cursor:pointer;
+}
+#add-plan-li{
+    display:block;
+    width:45px;
+    height:45px;
+    cursor:pointer;
+    border-radius: 50%;
+}
+#back-to-top{background:url(../images/back-to-top.svg) no-repeat;}
+
+/* 在1200以上宽度没有设置的属性, 在这里设置也适用于1200以上宽度 */
+@media (min-width : 768px) {
+    /* 控制左侧预览窗口是否显示的按钮 */
+    #toggle{
+        margin-left: 46%;
+        width:60px;
+        height: 30px;
+    }
+    #toggle-pic {
+        height:100%;
+        width: 100%;
+        background-image: url(../images/bottom-to-top.svg);
+    }
+    .plan-preview {
+        background-color: rgb(243, 243, 243);
+    }
+    .preview-head {
+        height: 100px;
+        padding-top: 3%;
+        font-size:2em;
+        text-align:center;
+        font-weight: bold;
+        color: blue;
+    }
+    .toDo, .doing, .done, .failed {
+        font-weight: bold;
+        font-size: 25px;
+        text-align: center;
+        width: 80%;
+        color: white;
+        border-radius: 50%;
+        height: 50px;
+        padding-top: 1%;
+    }
+    .toDo {
+        background-color: blue;
+    }
+    .doing {
+        background-color: yellow;
+    }
+    .done {
+        background-color: green;
+    }
+    .failed {
+        background-color: red;
+    }
+    .item-count {
+        width: 50%;
+        font-size: 1em;
+        margin-left: 1px;
+        background-color: black;
+    }
+    #include-show {
+        float: left;
+        width: 50%;
+    }
+    #show-button {
+        font-size: 25px;
+        font-weight: bold;
+        width: 100%;
+    }
+    .panel-footer {
+        text-align: center;
+        font-size: 1.3em;
+    }
+    .list-group-item {
+        font-size: 1.2em;
+    }
+    #collapseListGroup1 {
+        clear: both;
+    }
+    #collapseListGroup2 {
+        clear: both;
+    }
+    #collapseListGroup3 {
+        clear: both;
+    }
+    #collapseListGroup4 {
+        clear: both;
+    }
+    /* plan date list */
+    #go-to-concrete {
+        float: left;
+        width:70%;
+        font-size: 25px;
+        padding-top: 5%;
+        font-weight: bolder
+    }
+    #concrete-day {
+        display: inline-block;
+        width:40%;
+        font-size: 25px;
+    }
+    #go {
+        border-radius: 50%;
+        background-color:black;
+        color:white;
+        font-size:20px;
+    }
+    #year {
+        margin-top: 20%;
+    }
+    #select-list {
+    	font-size: 30px;
+        width: 13%;
+        height: 50px;
+        display: inline-block
+    }
+    .month {
+        width:30%;
+        float:left;
+        margin-left: 5%;
+        margin-top: 5%;
+        height: 200px;
+    }
+
+}
+@media (min-width : 1200px) {
+    /* 控制左侧预览窗口是否显示的按钮 */
+    #toggle{
+        position : fixed;
+        margin: 0%;
+        left: 30%;
+        top:55%;
+        width:30px;
+        height: 60px;
+    }
+    #toggle-pic {
+        background-image: url(../images/right-to-left.svg);
+    }
+    .plan-preview {
+        float: left;
+        width: 30%;
+    }
+    .preview-head {
+        padding-top: 8%;
+    }
+    .toDo, .doing, .done, .failed {
+        height: 100%;
+        font-size: 3em;
+        padding-top: 4%;
+        float: left;
+    }
+    .item-count {
+        font-size: 0.7em;
+        height: 35px;
+    }
+    #include-show {
+        float: none;
+        height: 100px;
+        margin-top:7%;
+        width: 100%;
+    }
+    #show {
+        width: 19%;
+        float: left;
+        margin-top: 7%
+    }
+    #show-button {
+        margin-top: -5%;
+    }
+    /* plan date list */
+    #go-to-concrete {
+        padding-top: 1%;
+    }
+    #year {
+        position: absolute;
+        margin-top: 5%;
+        right: 0;
+        width:67%;
+    }
+    #select-list {
+        font-size: 2em;
+        width: 13%;
+        height: 50px;
+        display: inline-block
+    }
+}
