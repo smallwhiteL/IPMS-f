@@ -4,12 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ipms.mapper.HomeMapper;
 import com.ipms.pojo.Plan;
 import com.ipms.service.HomeService;
 
 @Service
+@Transactional(isolation=Isolation.REPEATABLE_READ, propagation=Propagation.REQUIRED, readOnly=true)
 public class HomeServiceImpl implements HomeService {
 	
 	@Autowired

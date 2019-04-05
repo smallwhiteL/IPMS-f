@@ -4,12 +4,16 @@ import java.sql.SQLException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ipms.mapper.LoginAndRegisterMapper;
 import com.ipms.pojo.User;
 import com.ipms.service.LoginAndRegisterService;
 
 @Service
+@Transactional(isolation=Isolation.REPEATABLE_READ, propagation=Propagation.REQUIRED, readOnly=true)
 public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
 	
 	@Autowired
@@ -27,6 +31,7 @@ public class LoginAndRegisterServiceImpl implements LoginAndRegisterService {
 	}
 
 	@Override
+	@Transactional(isolation=Isolation.REPEATABLE_READ, propagation=Propagation.REQUIRED, readOnly=false)
 	public void registerService(User user) {
 		loginAndRegisterMapper.userRegister(user);
 	}
