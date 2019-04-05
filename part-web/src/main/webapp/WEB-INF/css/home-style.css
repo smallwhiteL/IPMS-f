@@ -112,11 +112,6 @@
         padding-top: 5%;
         font-weight: bolder
     }
-    #concrete-day {
-        display: inline-block;
-        width:40%;
-        font-size: 25px;
-    }
     #go {
         border-radius: 50%;
         background-color:black;

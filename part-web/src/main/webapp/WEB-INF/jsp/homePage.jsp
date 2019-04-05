@@ -155,8 +155,9 @@
     <!-- plan date list -->
     <div id="go-to-concrete">
         <div class="form-group">
-            查看此日内容:<input type="date" class="form-control" id="concrete-day">
-            <button id="go">Go</button>
+            <input type="text" class="form-control" style="width: 40%; display: inline-block; font-size: 25px; 
+            " placeholder="输入计划标题">
+            <button id="go">查找</button>
         </div>
     </div>
     
