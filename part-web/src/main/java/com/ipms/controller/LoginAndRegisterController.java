@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ipms.pojo.User;
@@ -30,7 +29,7 @@ public class LoginAndRegisterController {
 
 	// 登录处理
 	@RequestMapping("/login")
-	public String login (Model model, HttpServletRequest request) {
+	public String login (HttpServletRequest request) {
 		// 从Jsp获得的账号密码暂存于此User对象中
 		User userFromJsp = new User();
 		String username = request.getParameter("username");

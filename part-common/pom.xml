@@ -5,10 +5,11 @@
     <artifactId>IPMS-f</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
+  
+  
   <artifactId>part-common</artifactId>
   
-  
   <name>IPMS-common</name>
-  <description>The common resource part</description>
+  <description>The common part</description>
   
 </project>

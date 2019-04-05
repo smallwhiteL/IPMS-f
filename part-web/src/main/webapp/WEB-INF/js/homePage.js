@@ -1,4 +1,14 @@
 $(function(){
+	
+	// 获取this-year
+	$.ajax({
+		type: "post",
+		url: "getYear.action",
+		success:function(data) {
+			$("#select-list").append("<option selected='selected'>" + data + "</option>");
+		}
+	});
+	
 	// 后台获取本机IP地址
 	var ipAddress;
 	$.ajax({

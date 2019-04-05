@@ -136,7 +136,7 @@
   <modules>
   	<module>part-web</module>
   	<module>part-mapper</module>
-  	<module>part-pojo</module>
+  	<module>part-common</module>
   	<module>part-service</module>
   </modules>
 </project>

@@ -5,13 +5,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.ipms.mapper.LoginAndRegisterMapper">
 	
 	<sql id="selectAllColumn">
-		SELECT * FROM test_user
+		SELECT * FROM ipms_user
 	</sql>
 
 	<!-- 查询 -->
 	<select id="userLogin" parameterType="User" resultType="User">
 		<include refid="selectAllColumn"/>
-		<where>
+		<where> <!-- where标签用于处理第一个AND -->
 			<if test="username != null and username != ''"> <!-- 此处的username为User的属性而不是表中的列 -->
 				AND username = #{username}
 			</if>
@@ -24,7 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!-- 添加注册用户 -->
 	<insert id="userRegister" parameterType="User">
 		<!-- 由于字段类型问题没有设置selectKey -->
-		INSERT INTO test_user
+		INSERT INTO ipms_user
 		(user_id, username, password, name, sex, birthday) VALUES
 		(#{user_id}, #{username}, #{password}, #{name}, #{sex}, #{birthday})
 	</insert>

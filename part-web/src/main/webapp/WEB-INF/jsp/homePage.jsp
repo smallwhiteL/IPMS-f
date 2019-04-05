@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +30,7 @@
         <!-- toDo -->
         <div id="include-show">
             <label class="toDo">
-                未开始<label class="item-count">1001项</label>
+                待开始<label class="item-count" id="toDo_plan">${toDo_count}项</label>
             </label>
             <label id="show">
                 <a class="btn btn-default" id="show-button"
@@ -38,20 +39,27 @@
         </div>
         <div id="collapseListGroup1" class="panel-collapse collapse">
             <ul class="list-group">
-                <li class="list-group-item">Anim pariatur cliche reprehenderit, enim eiusmod high life</li>
-                <li class="list-group-item">non cupidatat skateboard dolor brunch. Food truck quinoa</li>
-                <li class="list-group-item">sunt aliqua put a bird on it squid single-origin coffee</li>
-                <li class="list-group-item">craft beer labore wes anderson cred nesciunt sapiente ea</li>
-                <li class="list-group-item">raw denim aesthetic synth nesciunt you probably haven't</li>
+                <c:if test="${toDo_count <= 5}">
+            		<c:forEach items="${toDo_plan}" var="toDo_item">
+            			<li class="list-group-item">${toDo_item.plan_title}</li>
+            		</c:forEach>
+            	</c:if>
+                <c:if test="${toDo_count > 5}">
+            		<c:forEach items="${toDo_plan}" end="4" var="toDo_item">
+            			<li class="list-group-item">${toDo_item.plan_title}</li>
+            		</c:forEach>
+            	</c:if>
             </ul>
-            <div class="panel-footer">
-                <a href="javascript:;">查看所有>></a>
-            </div>
+            <c:if test="${toDo_count > 5}">
+	            <div class="panel-footer">
+	                <a href="javascript:;">查看所有>></a>
+	            </div>
+            </c:if>
         </div>
         <!-- doing -->
         <div id="include-show">
             <label class="doing">
-                进行中<label class="item-count">9项</label>
+                进行中<label class="item-count" id="doing_plan">${doing_count}项</label>
             </label>
             <label id="show">
                 <a class="btn btn-default" id="show-button"
@@ -60,20 +68,27 @@
         </div>
         <div id="collapseListGroup2" class="panel-collapse collapse">
             <ul class="list-group">
-                <li class="list-group-item">Anim pariatur cliche reprehenderit, enim eiusmod high life</li>
-                <li class="list-group-item">non cupidatat skateboard dolor brunch. Food truck quinoa</li>
-                <li class="list-group-item">sunt aliqua put a bird on it squid single-origin coffee</li>
-                <li class="list-group-item">craft beer labore wes anderson cred nesciunt sapiente ea</li>
-                <li class="list-group-item">raw denim aesthetic synth nesciunt you probably haven't</li>
+            	<c:if test="${doing_count <= 5}">
+            		<c:forEach items="${doing_plan}" var="doing_item">
+            			<li class="list-group-item">${doing_item.plan_title}</li>
+            		</c:forEach>
+            	</c:if>
+                <c:if test="${doing_count > 5}">
+            		<c:forEach items="${doing_plan}" end="4" var="doing_item">
+            			<li class="list-group-item">${doing_item.plan_title}</li>
+            		</c:forEach>
+            	</c:if>
             </ul>
-            <div class="panel-footer">
-                <a href="javascript:;">查看所有>></a>
-            </div>
+            <c:if test="${doing_count > 5}">
+	            <div class="panel-footer">
+	                <a href="javascript:;">查看所有>></a>
+	            </div>
+            </c:if>
         </div>
         <!-- done -->
         <div id="include-show">
             <label class="done">
-                已结束<label class="item-count">1314项</label>
+                已结束<label class="item-count" id="done_plan">${done_count}项</label>
             </label>
             <label id="show">
                 <a class="btn btn-default" id="show-button"
@@ -82,20 +97,27 @@
         </div>
         <div id="collapseListGroup3" class="panel-collapse collapse">
             <ul class="list-group">
-                <li class="list-group-item">Anim pariatur cliche reprehenderit, enim eiusmod high life</li>
-                <li class="list-group-item">non cupidatat skateboard dolor brunch. Food truck quinoa</li>
-                <li class="list-group-item">sunt aliqua put a bird on it squid single-origin coffee</li>
-                <li class="list-group-item">craft beer labore wes anderson cred nesciunt sapiente ea</li>
-                <li class="list-group-item">raw denim aesthetic synth nesciunt you probably haven't</li>
+            	<c:if test="${done_count <= 5}">
+            		<c:forEach items="${done_plan}" var="done_item">
+            			<li class="list-group-item">${done_item.plan_title}</li>
+            		</c:forEach>
+            	</c:if>
+            	<c:if test="${done_count > 5}">
+            		<c:forEach items="${done_plan}" end="4" var="done_item">
+            			<li class="list-group-item">${done_item.plan_title}</li>
+            		</c:forEach>
+            	</c:if>
             </ul>
-            <div class="panel-footer">
-                <a href="javascript:;">查看所有>></a>
-            </div>
+            <c:if test="${done_count > 5}">
+	            <div class="panel-footer">
+	                <a href="javascript:;">查看所有>></a>
+	            </div>
+            </c:if>
         </div>
         <!-- failed -->
         <div id="include-show">
            <label class="failed">
-                已逾期<label class="item-count">lol项</label>
+                已逾期<label class="item-count" id="failed_plan">${failed_count}项</label>
             </label>
             <label id="show">
                 <a class="btn btn-default" id="show-button"
@@ -104,15 +126,22 @@
         </div>
         <div id="collapseListGroup4" class="panel-collapse collapse">
             <ul class="list-group">
-                <li class="list-group-item">Anim pariatur cliche reprehenderit, enim eiusmod high life</li>
-                <li class="list-group-item">non cupidatat skateboard dolor brunch. Food truck quinoa</li>
-                <li class="list-group-item">sunt aliqua put a bird on it squid single-origin coffee</li>
-                <li class="list-group-item">craft beer labore wes anderson cred nesciunt sapiente ea</li>
-                <li class="list-group-item">raw denim aesthetic synth nesciunt you probably haven't</li>
+            	<c:if test="${failed_count <= 5}"> 
+	            	<c:forEach items="${failed_plan}" var="failed_item">
+	            		 <li class="list-group-item">${failed_item.plan_title}</li>
+	            	</c:forEach>
+            	</c:if>
+            	<c:if test="${failed_count > 5}">
+		            <c:forEach items="${failed_plan}" end="4" var="failed_item">
+	            		 <li class="list-group-item">${failed_item.plan_title}</li>
+	            	</c:forEach>
+           		</c:if>
             </ul>
-            <div class="panel-footer">
-                <a href="javascript:;">查看所有>></a>
-            </div>
+            <c:if test="${failed_count > 5}">
+	            <div class="panel-footer">
+	                <a href="javascript:;">查看所有>></a>
+	            </div>
+            </c:if>
         </div>
     </div>
 
@@ -134,7 +163,6 @@
     <div id="year">
         <div style="text-align:center">
             <select class="form-control dropup" id="select-list">
-                <option selected="selected">2019</option>
             </select>
             <img id="animal-year">
         </div>
