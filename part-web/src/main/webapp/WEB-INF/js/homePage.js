@@ -1,14 +1,5 @@
 $(function(){
 	
-	// 获取this-year
-	$.ajax({
-		type: "post",
-		url: "getYear.action",
-		success:function(data) {
-			$("#select-list").append("<option selected='selected'>" + data + "</option>");
-		}
-	});
-	
 	// 后台获取本机IP地址
 	var ipAddress;
 	$.ajax({
@@ -16,6 +7,7 @@ $(function(){
 		url: "../common/getIpAddress.action",
 		success:function(data) {
 			ipAddress = data;
+			// 图片路径
 			var imagesPath = "http://" + ipAddress + ":8080/ipms/images/";
 			
 			$(window).scroll(function() {
@@ -33,7 +25,9 @@ $(function(){
 				500);
 			});
 			
-			var year = $("#select-list").val();
+			// 获取this-year
+			var thisYear = new Date().getFullYear();
+			$("#select-list").append("<option>" + thisYear + "</option>");
 			for (var i = 1; i <= 10; i++) {
 				var pastYear = parseInt($("#select-list").val()) - i;
 				var futureYear = parseInt($("#select-list").val()) + i;

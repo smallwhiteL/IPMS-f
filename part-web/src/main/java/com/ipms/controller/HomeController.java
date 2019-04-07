@@ -65,11 +65,4 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
-	// 获得今年年份
-	@RequestMapping("/getYear")
-	public void getYear(HttpServletResponse response) throws IOException {
-		int year = Calendar.getInstance().get(Calendar.YEAR);
-		response.getWriter().print(year);
-	}
-	
 }

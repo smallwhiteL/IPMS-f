@@ -10,6 +10,8 @@
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <!-- Own CSS -->
 <link href="${pageContext.request.contextPath}/css/home-style.css" rel="stylesheet">
+<!-- Title Icon -->
+<link href="${pageContext.request.contextPath}/images/plan.jpg" rel="shortcut icon">
 <!-- JQuery (Before Bootstrap) -->
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <!-- Load Bootstrap Javascript Plugin -->
