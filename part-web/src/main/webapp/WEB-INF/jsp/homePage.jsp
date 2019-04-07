@@ -205,7 +205,7 @@
     <ul id="add-plan-ul">
         <li style="display:none;"><button id="back-to-top" style="border:none"></button></li>
         <li>
-            <a id="add-plan-li" href="javascript:;" data-toggle="modal" data-target="#addPlanModal">
+            <a id="add-plan-li" data-toggle="modal" data-target="#addPlanModal">
                 <img src="${pageContext.request.contextPath}/images/add-plan.svg" style="height: 45px; width: 100%" />
             </a>
         </li>
