@@ -6,9 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>用户注册</title>
 
-<!-- Own Javascript -->
-<script src="${pageContext.request.contextPath}/js/registerJS.js"></script>
-
 </head>
 <body>
 	<!-- Modal -->

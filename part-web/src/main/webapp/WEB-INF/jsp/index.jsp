@@ -16,6 +16,8 @@
 <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 <!-- Load Bootstrap Javascript Plugin -->
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+<!-- Own Javascript register -->
+<script src="${pageContext.request.contextPath}/js/registerJS.js"></script>
 
 </head>
 <body style="height: 100%; margin: auto; background: yellowgreen;">

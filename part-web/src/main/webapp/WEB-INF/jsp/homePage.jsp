@@ -18,8 +18,7 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
 <!-- Own Javascript -->
 <script src="${pageContext.request.contextPath}/js/homePage.js"></script>
-<!-- Get iPAddress script from sohu browser -->
-<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script src="${pageContext.request.contextPath}/js/homePage2.js"></script>
 </head>
 <body>
 	<!-- Header -->
@@ -43,12 +42,16 @@
             <ul class="list-group">
                 <c:if test="${toDo_count <= 5}">
             		<c:forEach items="${toDo_plan}" var="toDo_item">
-            			<li class="list-group-item">${toDo_item.plan_title}</li>
+            			<li class="list-group-item">
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${toDo_item.plan_title}</a>
+           				</li>
             		</c:forEach>
             	</c:if>
                 <c:if test="${toDo_count > 5}">
             		<c:forEach items="${toDo_plan}" end="4" var="toDo_item">
-            			<li class="list-group-item">${toDo_item.plan_title}</li>
+            			<li class="list-group-item">
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${toDo_item.plan_title}</a>
+           				</li>
             		</c:forEach>
             	</c:if>
             </ul>
@@ -72,12 +75,16 @@
             <ul class="list-group">
             	<c:if test="${doing_count <= 5}">
             		<c:forEach items="${doing_plan}" var="doing_item">
-            			<li class="list-group-item">${doing_item.plan_title}</li>
+            			<li class="list-group-item">
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${doing_item.plan_title}</a>
+           				</li>
             		</c:forEach>
             	</c:if>
                 <c:if test="${doing_count > 5}">
             		<c:forEach items="${doing_plan}" end="4" var="doing_item">
-            			<li class="list-group-item">${doing_item.plan_title}</li>
+            			<li class="list-group-item">
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${doing_item.plan_title}</a>
+           				</li>
             		</c:forEach>
             	</c:if>
             </ul>
@@ -101,12 +108,16 @@
             <ul class="list-group">
             	<c:if test="${done_count <= 5}">
             		<c:forEach items="${done_plan}" var="done_item">
-            			<li class="list-group-item">${done_item.plan_title}</li>
+            			<li class="list-group-item">
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${done_item.plan_title}</a>
+           				</li>
             		</c:forEach>
             	</c:if>
             	<c:if test="${done_count > 5}">
             		<c:forEach items="${done_plan}" end="4" var="done_item">
-            			<li class="list-group-item">${done_item.plan_title}</li>
+            			<li class="list-group-item">
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${done_item.plan_title}</a>
+           				</li>
             		</c:forEach>
             	</c:if>
             </ul>
@@ -130,12 +141,16 @@
             <ul class="list-group">
             	<c:if test="${failed_count <= 5}"> 
 	            	<c:forEach items="${failed_plan}" var="failed_item">
-	            		 <li class="list-group-item">${failed_item.plan_title}</li>
+	            		<li class="list-group-item">
+	            			<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${failed_item.plan_title}</a>
+            		 	</li>
 	            	</c:forEach>
             	</c:if>
             	<c:if test="${failed_count > 5}">
 		            <c:forEach items="${failed_plan}" end="4" var="failed_item">
-	            		 <li class="list-group-item">${failed_item.plan_title}</li>
+	            		<li class="list-group-item">
+	            			<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${failed_item.plan_title}</a>
+            		 	</li>
 	            	</c:forEach>
            		</c:if>
             </ul>
@@ -153,6 +168,9 @@
             <img id="toggle-pic">
         </a>
     </div>
+    
+   	<!-- 任务详情及修改框 -->
+   	<%@ include file="/WEB-INF/jsp/plan-detailAndEdit.jsp" %>
 
     <!-- plan date list -->
     <div id="go-to-concrete">
@@ -187,10 +205,14 @@
     <ul id="add-plan-ul">
         <li style="display:none;"><button id="back-to-top" style="border:none"></button></li>
         <li>
-            <a id="add-plan-li" href="javascript:;">
+            <a id="add-plan-li" href="javascript:;" data-toggle="modal" data-target="#addPlanModal">
                 <img src="${pageContext.request.contextPath}/images/add-plan.svg" style="height: 45px; width: 100%" />
             </a>
         </li>
     </ul>
+    
+    <!-- 添加任务框 -->
+    <%@ include file="/WEB-INF/jsp/addPlan.jsp" %>
+    
 </body>
 </html>

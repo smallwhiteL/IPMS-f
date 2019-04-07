@@ -4,6 +4,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>IPMS-f</title>
+	<!-- Title Icon -->
+	<link href="${pageContext.request.contextPath}/images/plan.jpg" rel="shortcut icon">
 	<script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery-3.3.1.min.js"></script>
 	<script type="text/javascript">
 		time = 2;
