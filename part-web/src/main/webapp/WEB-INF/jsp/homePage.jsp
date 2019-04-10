@@ -44,6 +44,7 @@
             		<c:forEach items="${toDo_plan}" var="toDo_item">
             			<li class="list-group-item">
             				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${toDo_item.plan_title}</a>
+            				<br><a class="btn btn-danger delete-plan" data-dismiss="modal" style="font-size: 15px">删除</a>
            				</li>
             		</c:forEach>
             	</c:if>
@@ -51,6 +52,7 @@
             		<c:forEach items="${toDo_plan}" end="4" var="toDo_item">
             			<li class="list-group-item">
             				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${toDo_item.plan_title}</a>
+            				<br><a class="btn btn-danger delete-plan" data-dismiss="modal" style="font-size: 15px">删除</a>
            				</li>
             		</c:forEach>
             	</c:if>
@@ -77,6 +79,7 @@
             		<c:forEach items="${doing_plan}" var="doing_item">
             			<li class="list-group-item">
             				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${doing_item.plan_title}</a>
+            				<br><a class="btn btn-danger delete-plan" data-dismiss="modal" style="font-size: 15px">删除</a>
            				</li>
             		</c:forEach>
             	</c:if>
@@ -84,6 +87,7 @@
             		<c:forEach items="${doing_plan}" end="4" var="doing_item">
             			<li class="list-group-item">
             				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${doing_item.plan_title}</a>
+            				<br><a class="btn btn-danger delete-plan" data-dismiss="modal" style="font-size: 15px">删除</a>
            				</li>
             		</c:forEach>
             	</c:if>
@@ -110,6 +114,7 @@
             		<c:forEach items="${done_plan}" var="done_item">
             			<li class="list-group-item">
             				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${done_item.plan_title}</a>
+            				<br><a class="btn btn-danger delete-plan" data-dismiss="modal" style="font-size: 15px">删除</a>
            				</li>
             		</c:forEach>
             	</c:if>
@@ -117,6 +122,7 @@
             		<c:forEach items="${done_plan}" end="4" var="done_item">
             			<li class="list-group-item">
             				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${done_item.plan_title}</a>
+            				<br><a class="btn btn-danger delete-plan" data-dismiss="modal" style="font-size: 15px">删除</a>
            				</li>
             		</c:forEach>
             	</c:if>
@@ -143,6 +149,7 @@
 	            	<c:forEach items="${failed_plan}" var="failed_item">
 	            		<li class="list-group-item">
 	            			<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${failed_item.plan_title}</a>
+	            			<br><a class="btn btn-danger delete-plan" data-dismiss="modal" style="font-size: 15px">删除</a>
             		 	</li>
 	            	</c:forEach>
             	</c:if>
@@ -150,6 +157,7 @@
 		            <c:forEach items="${failed_plan}" end="4" var="failed_item">
 	            		<li class="list-group-item">
 	            			<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${failed_item.plan_title}</a>
+	            			<br><a class="btn btn-danger delete-plan" data-dismiss="modal" style="font-size: 15px">删除</a>
             		 	</li>
 	            	</c:forEach>
            		</c:if>

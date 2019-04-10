@@ -53,7 +53,7 @@ public class User {
 		this.birthday = birthday;
 	}
 	public User() {
-		
+		super();
 	}
 	
 	public User(String user_id, String username, String password, String name, String sex, Date birthday) {

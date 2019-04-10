@@ -30,10 +30,24 @@
                     截止时间:
                     <input type="date" class="form-control" id="plan-end" style="font-size:1.2em">
                 </div>
+                <div class="form-group status-list" style="display: none">
+                    <label class="control-label">状态:</label><br>
+                    <label class="radio-inline" style="height: 37px; color: green">
+                        <input type="radio" value="3" name="add-status" id="add-done-status"
+                        style="height: 20px; width: 20px; margin-top: 8px" class="form-control add-status">
+                        已结束
+                    </label>
+                    <label class="radio-inline" style="height: 37px; color: red">
+                        <input type="radio" value="4" name="add-status" id="add-failed-status"
+                        style="height: 20px; width: 20px; margin-top: 8px" class="form-control add-status">
+                        已逾期
+                    </label>
+                </div>
+                <div class="form-group" style="color:red" id="add-tips"></div>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-default cancel-add" data-dismiss="modal">关闭</button>
-            <button type="button" class="btn btn-primary">添加</button>
+            <button type="button" class="btn btn-primary" id="add">添加</button>
             </div>
         </div>
         </div>

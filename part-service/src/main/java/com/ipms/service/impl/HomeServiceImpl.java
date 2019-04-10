@@ -60,4 +60,10 @@ public class HomeServiceImpl implements HomeService {
 		return homeMapper.listFailed(plan_userId);
 	}
 
+	@Override
+	@Transactional(isolation=Isolation.REPEATABLE_READ, propagation=Propagation.REQUIRED, readOnly=false)
+	public void addPlan(Plan plan) {
+		homeMapper.addPlan(plan);
+	}
+
 }

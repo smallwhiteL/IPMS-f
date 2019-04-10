@@ -21,5 +21,7 @@ public interface HomeService {
 	List<Plan> listDone(String plan_userId);
 	
 	List<Plan> listFailed(String plan_userId);
+	
+	void addPlan(Plan plan);
 
 }

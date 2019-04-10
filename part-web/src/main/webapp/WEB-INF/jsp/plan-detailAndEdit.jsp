@@ -11,9 +11,11 @@
 	<!-- Modal -->
 	<div class="modal fade" id="plan-detail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
          <div class="modal-dialog" role="document">
-             <div class="modal-content" style="font-size:1.2em;">
+             <div class="modal-content" style="font-size:20px;">
                  <div class="modal-header">
-                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <button type="button" class="close cancel-update" data-dismiss="modal" aria-label="Close">
+                 	<span aria-hidden="true">&times;</span>
+           		 </button>
                  <h4 class="modal-title">
                      <input type="text" class="form-control" id="plan-title-detail"
                       style="font-size:1.2em" placeholder="计划标题" maxlength="30" readonly>
@@ -55,9 +57,10 @@
                              已逾期
                          </label>
                      </div>
+                     <div class="form-group" style="color:red" id="edit-tips"></div>
                  </div>
                  <div class="modal-footer">
-                 <button type="button" class="btn btn-default" data-dismiss="modal" id="cancel-update">取消</button>
+                 <button type="button" class="btn btn-default cancel-update" data-dismiss="modal">取消</button>
                  <button type="button" class="btn btn-primary" id="update">修改</button>
                  </div>
              </div>

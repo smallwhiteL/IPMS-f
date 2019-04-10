@@ -48,4 +48,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectPlan"/> WHERE plan_status = 4 AND plan_userId = #{value}
 	</select>
 	
+	<insert id="addPlan" parameterType="Plan">
+		<selectKey keyProperty="plan_id" resultType="Integer" order="AFTER">
+			select LAST_INSERT_ID()
+		</selectKey>
+		INSERT INTO ipms_plan (plan_title, plan_starting_time, plan_ending_time, plan_describe, plan_status, plan_userId)
+		VALUES (#{plan_title}, #{plan_starting_time}, #{plan_ending_time}, #{plan_describe}, #{plan_status}, #{plan_userId})
+	</insert>
+	
 </mapper>

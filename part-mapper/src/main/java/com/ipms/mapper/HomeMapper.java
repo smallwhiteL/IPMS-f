@@ -22,4 +22,6 @@ public interface HomeMapper {
 	
 	List<Plan> listFailed(String plan_userId);
 	
+	void addPlan(Plan plan);
+	
 }

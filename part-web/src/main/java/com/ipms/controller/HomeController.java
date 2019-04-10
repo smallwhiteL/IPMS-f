@@ -1,7 +1,8 @@
 package com.ipms.controller;
 
-import java.io.IOException;
-import java.util.Calendar;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +32,7 @@ public class HomeController {
 		User loginUser = (User) request.getSession().getAttribute("loginUser");
 		String user_id = loginUser.getUser_id();
 		
-		// 获得相应任务(toDo,done,doing,failed)
+		// 获得相应计划(toDo,done,doing,failed)
 		List<Plan> toDo_plan = homeService.listToDo(user_id);
 		List<Plan> doing_plan = homeService.listDoing(user_id);
 		List<Plan> done_plan = homeService.listDone(user_id);
@@ -63,6 +64,32 @@ public class HomeController {
 		request.getSession().invalidate();
 		// 回到登录页面
 		return "redirect:/";
+	}
+	
+	// 添加计划
+	@RequestMapping("/addPlan")
+	public void addPlan(HttpServletRequest request) throws ParseException {
+		
+		// 从session获取登录的用户
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+		String user_id = loginUser.getUser_id();
+		
+		// 获取要添加的计划的信息
+		String plan_title = request.getParameter("plan-title");
+		String plan_describe = request.getParameter("plan-describe");
+		String plan_start = request.getParameter("plan-start-date");
+		String plan_end = request.getParameter("plan-end-date");
+		String plan_status = request.getParameter("plan-status");
+		
+		Integer plan_status_num = Integer.parseInt(plan_status);
+		
+		// 日期转换
+		String date_format = "yyyy-MM-dd";
+		Date plan_start_date = new SimpleDateFormat(date_format).parse(plan_start);
+		Date plan_end_date = new SimpleDateFormat(date_format).parse(plan_end);
+		
+		Plan plan = new Plan(plan_title, plan_start_date, plan_end_date, plan_describe, plan_status_num, user_id);
+		homeService.addPlan(plan);
 	}
 	
 }
