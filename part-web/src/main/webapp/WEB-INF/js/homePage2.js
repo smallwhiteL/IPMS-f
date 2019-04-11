@@ -163,10 +163,6 @@ $(function(){
         }
 	});
     
-    $(".delete-plan").click(function(){
-        confirm("确认删除该计划?");
-    });
-    
     // 限定textarea输入字符
 	$("#plan-describe").on("input propertychange", function () {
 		var $this = $(this),
@@ -182,4 +178,16 @@ $(function(){
 			 $this.val(_val.substring(0, 255));
 		  }
 	});
+	
 });
+
+function deletePlan(plan_id) {
+	if ( confirm("确认删除该计划?") ) {
+		$.ajax({
+			type: "post",
+			url: "deletePlan.action",
+			data: {"plan_id" : plan_id}
+		});
+	}
+	location.reload(true);
+}

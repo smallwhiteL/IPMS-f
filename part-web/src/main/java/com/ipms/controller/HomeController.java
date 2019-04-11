@@ -92,4 +92,12 @@ public class HomeController {
 		homeService.addPlan(plan);
 	}
 	
+	// 删除计划
+	@RequestMapping("/deletePlan")
+	public void deletePlan(HttpServletRequest request) {
+		// 获取要删除的计划id
+		Integer plan_id = Integer.parseInt(request.getParameter("plan_id"));
+		homeService.deletePlan(plan_id);
+	}
+	
 }

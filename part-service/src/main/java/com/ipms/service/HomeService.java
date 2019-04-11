@@ -23,5 +23,7 @@ public interface HomeService {
 	List<Plan> listFailed(String plan_userId);
 	
 	void addPlan(Plan plan);
+	
+	void deletePlan(Integer plan_id);
 
 }

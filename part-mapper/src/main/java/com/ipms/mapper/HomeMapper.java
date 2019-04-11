@@ -24,4 +24,6 @@ public interface HomeMapper {
 	
 	void addPlan(Plan plan);
 	
+	void deletePlan(Integer plan_id);
+	
 }

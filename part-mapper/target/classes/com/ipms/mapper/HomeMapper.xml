@@ -12,6 +12,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT COUNT(*) FROM ipms_plan
 	</sql>
 	
+	<!-- 获取四个状态的数量及详情 -->
 	<!-- toDo -->
 	<select id="findToDo" parameterType="String" resultType="Integer">
 		<include refid="selectCount"/> WHERE plan_status = 1 AND plan_userId = #{value}
@@ -48,6 +49,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectPlan"/> WHERE plan_status = 4 AND plan_userId = #{value}
 	</select>
 	
+	<!-- 添加计划 -->
 	<insert id="addPlan" parameterType="Plan">
 		<selectKey keyProperty="plan_id" resultType="Integer" order="AFTER">
 			select LAST_INSERT_ID()
@@ -55,5 +57,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO ipms_plan (plan_title, plan_starting_time, plan_ending_time, plan_describe, plan_status, plan_userId)
 		VALUES (#{plan_title}, #{plan_starting_time}, #{plan_ending_time}, #{plan_describe}, #{plan_status}, #{plan_userId})
 	</insert>
+	
+	<!-- 根据plan_id删除计划 -->
+	<delete id="deletePlan" parameterType="Integer">
+		DELETE FROM ipms_plan WHERE plan_id = #{plan_id}
+	</delete>
 	
 </mapper>
