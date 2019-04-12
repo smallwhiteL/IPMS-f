@@ -25,5 +25,9 @@ public interface HomeService {
 	void addPlan(Plan plan);
 	
 	void deletePlan(Integer plan_id);
+	
+	Plan getPlanById(Integer plan_id);
+	
+	void updatePlan(Plan plan);
 
 }

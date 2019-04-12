@@ -35,7 +35,7 @@
                          <input type="date" class="form-control" id="plan-end-detail" style="font-size:1.1em" disabled>
                      </div>
                      <div class="form-group">
-                         <label class="control-label adjustment1">状态:</label><br>
+                         <label class="control-label">状态:</label><br>
                          <label class="radio-inline" style="height: 37px; color: blue">
                              <input type="radio" value="1" name="status" id="toDo-status"
                              style="height: 20px; width: 20px; margin-top: 8px" class="form-control" disabled>

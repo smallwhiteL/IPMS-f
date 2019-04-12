@@ -72,4 +72,15 @@ public class HomeServiceImpl implements HomeService {
 		homeMapper.deletePlan(plan_id);
 	}
 
+	@Override
+	public Plan getPlanById(Integer plan_id) {
+		return homeMapper.getPlanById(plan_id);
+	}
+
+	@Override
+	@Transactional(isolation=Isolation.REPEATABLE_READ, propagation=Propagation.REQUIRED, readOnly=false)
+	public void updatePlan(Plan plan) {
+		homeMapper.updatePlan(plan);
+	}
+
 }

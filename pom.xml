@@ -19,6 +19,7 @@
 	<mybatis.version>3.2.8</mybatis.version>
 	<mybatis.spring.version>1.2.2</mybatis.spring.version>
 	<druid.version>1.0.9</druid.version>
+	<jackson.version>2.9.8</jackson.version>
   </properties>
   
   <dependencyManagement>
@@ -99,6 +100,18 @@
 			<artifactId>jsp-api</artifactId>
 			<version>${jsp-api.version}</version>
 			<scope>provided</scope>
+		</dependency>
+		
+		<!-- Jackson Json处理工具包 -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>${jackson.version}</version>
 		</dependency>
 		
   	</dependencies>

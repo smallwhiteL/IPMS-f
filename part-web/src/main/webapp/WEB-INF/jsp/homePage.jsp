@@ -43,7 +43,8 @@
                 <c:if test="${toDo_count <= 5}">
             		<c:forEach items="${toDo_plan}" var="toDo_item">
             			<li class="list-group-item">
-            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${toDo_item.plan_title}</a>
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail"
+            				onclick="getPlanById(${toDo_item.plan_id})">${toDo_item.plan_title}</a>
             				<br><a class="btn btn-danger" data-dismiss="modal" style="font-size: 15px"
             				onclick="deletePlan(${toDo_item.plan_id})">删除</a>
            				</li>
@@ -52,7 +53,8 @@
                 <c:if test="${toDo_count > 5}">
             		<c:forEach items="${toDo_plan}" end="4" var="toDo_item">
             			<li class="list-group-item">
-            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${toDo_item.plan_title}</a>
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail"
+            				onclick="getPlanById(${toDo_item.plan_id})">${toDo_item.plan_title}</a>
             				<br><a class="btn btn-danger" data-dismiss="modal" style="font-size: 15px"
             				onclick="deletePlan(${toDo_item.plan_id})">删除</a>
            				</li>
@@ -80,7 +82,8 @@
             	<c:if test="${doing_count <= 5}">
             		<c:forEach items="${doing_plan}" var="doing_item">
             			<li class="list-group-item">
-            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${doing_item.plan_title}</a>
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail"
+            				onclick="getPlanById(${doing_item.plan_id})">${doing_item.plan_title}</a>
             				<br><a class="btn btn-danger" data-dismiss="modal" style="font-size: 15px"
             				onclick="deletePlan(${doing_item.plan_id})">删除</a>
            				</li>
@@ -89,7 +92,8 @@
                 <c:if test="${doing_count > 5}">
             		<c:forEach items="${doing_plan}" end="4" var="doing_item">
             			<li class="list-group-item">
-            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${doing_item.plan_title}</a>
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail"
+            				onclick="getPlanById(${doing_item.plan_id})">${doing_item.plan_title}</a>
             				<br><a class="btn btn-danger" data-dismiss="modal" style="font-size: 15px"
             				onclick="deletePlan(${doing_item.plan_id})">删除</a>
            				</li>
@@ -117,7 +121,8 @@
             	<c:if test="${done_count <= 5}">
             		<c:forEach items="${done_plan}" var="done_item">
             			<li class="list-group-item">
-            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${done_item.plan_title}</a>
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail"
+            				onclick="getPlanById(${done_item.plan_id})">${done_item.plan_title}</a>
             				<br><a class="btn btn-danger" data-dismiss="modal" style="font-size: 15px"
             				onclick="deletePlan(${done_item.plan_id})">删除</a>
            				</li>
@@ -126,7 +131,8 @@
             	<c:if test="${done_count > 5}">
             		<c:forEach items="${done_plan}" end="4" var="done_item">
             			<li class="list-group-item">
-            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${done_item.plan_title}</a>
+            				<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail"
+            				onclick="getPlanById(${done_item.plan_id})">${done_item.plan_title}</a>
             				<br><a class="btn btn-danger" data-dismiss="modal" style="font-size: 15px"
             				onclick="deletePlan(${done_item.plan_id})">删除</a>
            				</li>
@@ -154,7 +160,8 @@
             	<c:if test="${failed_count <= 5}"> 
 	            	<c:forEach items="${failed_plan}" var="failed_item">
 	            		<li class="list-group-item">
-	            			<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${failed_item.plan_title}</a>
+	            			<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail"
+	            			onclick="getPlanById(${failed_item.plan_id})">${failed_item.plan_title}</a>
 	            			<br><a class="btn btn-danger" data-dismiss="modal" style="font-size: 15px"
 	            			onclick="deletePlan(${failed_item.plan_id})">删除</a>
             		 	</li>
@@ -163,7 +170,8 @@
             	<c:if test="${failed_count > 5}">
 		            <c:forEach items="${failed_plan}" end="4" var="failed_item">
 	            		<li class="list-group-item">
-	            			<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail">${failed_item.plan_title}</a>
+	            			<a style="cursor:pointer" data-toggle="modal" data-target="#plan-detail"
+	            			onclick="getPlanById(${failed_item.plan_id})">${failed_item.plan_title}</a>
 	            			<br><a class="btn btn-danger" data-dismiss="modal" style="font-size: 15px"
 	            			onclick="deletePlan(${failed_item.plan_id})">删除</a>
             		 	</li>

@@ -1,9 +1,11 @@
-$(function(){
+var plan_id;
 
-    var plan_start_detail = $("#plan-start-detail");
-    var plan_end_detail = $("#plan-end-detail");
-    var plan_start = $("#plan-start");
-    var plan_end = $("#plan-end");
+$(function(){
+	var plan_start_detail = $("#plan-start-detail");
+	var plan_end_detail = $("#plan-end-detail");
+	var plan_start = $("#plan-start");
+	var plan_end = $("#plan-end");
+
 
     // 点击修改,激活所有修改项
     $("#update").click(function(){
@@ -27,22 +29,34 @@ $(function(){
                 $("#edit-tips").html("标题及起始时间不能为空!"); // 由于这里是从后台获取信息,单选按钮必有值,可以不检查状态是否为空
             } else {
                 if ( detail_start_time <= detail_end_time ) {
-
-                    $("#plan-title-detail").attr("readonly", "readonly");
-                    $("#plan-describe-detail").attr("readonly", "readonly");
-                    plan_start_detail.attr("disabled", "disabled");
-                    plan_end_detail.attr("disabled", "disabled");
-                    $("#toDo-status").attr("disabled", "disabled");
-                    $("#doing-status").attr("disabled", "disabled");
-                    $("#done-status").attr("disabled", "disabled");
-                    $("#failed-status").attr("disabled", "disabled");
-                    $("#edit-tips").html("");
-                    $(this).html("修改");
-                    alert("修改成功!");
+                	var status;
+                	if ( $("#toDo-status").prop("checked") ) {
+                		status = "1";
+                	} else if ( $("#doing-status").prop("checked") ) {
+                		status = "2";
+                	} else if ( $("#done-status").prop("checked") ) {
+                		status = "3";
+                	} else if ( $("#failed-status").prop("checked") ) {
+                		status = "4";
+                	}
+                	$.ajax({
+            			type: "post",
+            			url: "updatePlan.action",
+            			data: {
+            				"plan_id" : plan_id + "",
+            				"plan_title" : $("#plan-title-detail").val(),
+            				"plan_starting_time" : $("#plan-start-detail").val(),
+            				"plan_ending_time" : $("#plan-end-detail").val(),
+            				"plan_describe" : $("#plan-describe-detail").val(),
+            				"plan_status" : status
+        				}
+            		});
+                	alert("修改成功!");
+                	location.reload(true);
 
                 }
                 else {
-                    $("#edit-tips").html("开始时间不能大于结束时间!");
+                    $("#edit-tips").html("开始时间不能大于截止时间!");
                 }
             }
         }
@@ -75,7 +89,7 @@ $(function(){
             $("#add-tips").html("标题及起始时间不能为空!");
         } else {
             if ( add_start_time <= add_end_time ) {
-                // 根据今天判断状态,若小于开始时间默认为-未开始,若在开始时间和结束时间之间默认为-进行中,若大于结束时间根据以下情况判断状态
+                // 根据今天判断状态,若小于开始时间默认为-未开始,若在开始时间和截止时间之间默认为-进行中,若大于截止时间根据以下情况判断状态
                 if ( today > add_end_time ) { // 4.10 15:54 > 4.10 8:00
                     if ( $("#add-done-status").prop("checked") || $("#add-failed-status").prop("checked") ) {
                     	plan_status = $("#add-done-status").prop("checked")?"3":"4";
@@ -95,7 +109,7 @@ $(function(){
     
                     }else {
                         if ( today.getDate() > add_end_time.getDate() ) { // 这个判断出现的原因是Date.parse()转换过来的日期默认为 8:00 am
-                            $("#add-tips").html("今天在结束时间之后,请选择状态!");
+                            $("#add-tips").html("今天在截止时间之后,请选择状态!");
                         } else { // 4.10 = 4.10
                         	plan_status = "2";
                         	$.ajax({
@@ -133,7 +147,7 @@ $(function(){
 
             }
             else {
-                $("#add-tips").html("开始时间不能大于结束时间!");
+                $("#add-tips").html("开始时间不能大于截止时间!");
             }
         }
     });
@@ -188,6 +202,31 @@ function deletePlan(plan_id) {
 			url: "deletePlan.action",
 			data: {"plan_id" : plan_id}
 		});
+		location.reload(true);
 	}
-	location.reload(true);
+}
+
+function getPlanById(plan_id) {
+	this.plan_id = plan_id;
+	$.ajax({
+		type: "get",
+		url: "getPlanById.action",
+		data: {"plan_id" : plan_id},
+		success:function(data) { // data是 Plan对象的JSON字符串,必须使用jackson依赖包于common-part中
+			$("#plan-title-detail").val(data.plan_title);
+			$("#plan-describe-detail").val(data.plan_describe);
+			$("#plan-start-detail").val(data.plan_starting_time);
+			$("#plan-end-detail").val(data.plan_ending_time);
+			if (data.plan_status == "1") {
+				$("#toDo-status").attr("checked","checked");
+			} else if (data.plan_status == "2") {
+				$("#doing-status").attr("checked","checked");
+			} else if (data.plan_status == "3") {
+				$("#done-status").attr("checked","checked");
+			} else if (data.plan_status == "4") {
+				$("#failed-status").attr("checked","checked");
+			}
+			
+		}
+	});
 }

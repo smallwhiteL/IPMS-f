@@ -59,6 +59,17 @@ public class Plan {
 				+ plan_status + ", plan_userId=" + plan_userId + "]";
 	}
 	
+	public Plan(Integer plan_id, String plan_title, Date plan_starting_time, Date plan_ending_time,
+			String plan_describe, Integer plan_status, String plan_userId) {
+		super();
+		this.plan_id = plan_id;
+		this.plan_title = plan_title;
+		this.plan_starting_time = plan_starting_time;
+		this.plan_ending_time = plan_ending_time;
+		this.plan_describe = plan_describe;
+		this.plan_status = plan_status;
+		this.plan_userId = plan_userId;
+	}
 	public Plan() {
 		super();
 	}
