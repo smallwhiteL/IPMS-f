@@ -1,6 +1,6 @@
 package com.ipms.pojo;
 /**
- * 该对象用于前后端传输的计划的内容格式化为String
+ * 该类用于前后端传输的计划的内容格式化为String
  * @author smallwhiteL
  *
  */

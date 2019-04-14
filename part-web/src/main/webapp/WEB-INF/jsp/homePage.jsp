@@ -21,6 +21,13 @@
 <script src="${pageContext.request.contextPath}/js/homePage2.js"></script>
 </head>
 <body>
+	<%
+		// 移除从其他页面的session信息
+		if (session.getAttribute("otherPages") != null) {
+			session.removeAttribute("otherPages");
+		}
+	%>
+	
 	<!-- Header -->
 	<%@ include file="/WEB-INF/jsp/common/pageHeader.jsp" %>
 	
@@ -63,7 +70,10 @@
             </ul>
             <c:if test="${toDo_count > 5}">
 	            <div class="panel-footer">
-	                <a href="javascript:;">查看所有>></a>
+	            	<form name="redictForm1" action="toOneStatusPlan.action" method="post">
+	            		<input type="hidden" name="status" value="1">
+	            	</form>
+	                <a href="javascript:;" onclick="redict1()">查看所有>></a>
 	            </div>
             </c:if>
         </div>
@@ -102,7 +112,10 @@
             </ul>
             <c:if test="${doing_count > 5}">
 	            <div class="panel-footer">
-	                <a href="javascript:;">查看所有>></a>
+	            	<form name="redictForm2" action="toOneStatusPlan.action" method="post">
+	            		<input type="hidden" name="status" value="2">
+	            	</form>
+	                <a href="javascript:;" onclick="redict2()">查看所有>></a>
 	            </div>
             </c:if>
         </div>
@@ -141,7 +154,10 @@
             </ul>
             <c:if test="${done_count > 5}">
 	            <div class="panel-footer">
-	                <a href="javascript:;">查看所有>></a>
+	            	<form name="redictForm3" action="toOneStatusPlan.action" method="post">
+	            		<input type="hidden" name="status" value="3">
+	            	</form>
+	                <a href="javascript:;" onclick="redict3()">查看所有>></a>
 	            </div>
             </c:if>
         </div>
@@ -180,7 +196,10 @@
             </ul>
             <c:if test="${failed_count > 5}">
 	            <div class="panel-footer">
-	                <a href="javascript:;">查看所有>></a>
+	            	<form name="redictForm4" action="toOneStatusPlan.action" method="post">
+	            		<input type="hidden" name="status" value="4">
+	            	</form>
+	                <a href="javascript:;" onclick="redict4()">查看所有>></a>
 	            </div>
             </c:if>
         </div>
@@ -196,7 +215,7 @@
    	<!-- 任务详情及修改框 -->
    	<%@ include file="/WEB-INF/jsp/plan-detailAndEdit.jsp" %>
 
-    <!-- plan date list -->
+    <!-- plan find -->
     <div id="go-to-concrete">
         <div class="form-group">
             <input type="text" class="form-control" style="width: 40%; display: inline-block; font-size: 25px; 

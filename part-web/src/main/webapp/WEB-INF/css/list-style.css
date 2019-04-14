@@ -1,0 +1,75 @@
+/* 右侧用于添加计划的悬浮窗 */
+#add-plan-ul li{height:50px;}
+#back-to-top{
+    display:block;
+    width:45px;
+    height:45px;
+    overflow:hidden;
+    cursor:pointer;
+}
+#add-plan-li{
+    display:block;
+    width:45px;
+    height:45px;
+    cursor:pointer;
+    border-radius: 50%;
+}
+@media (min-width : 768px) {
+    /* 右侧用于添加计划的悬浮窗 */
+    #add-plan-ul{
+        position:fixed;
+        top:30%;
+        right:50px;
+        width:15px;
+        z-index:400;
+        list-style-type: none;
+    }
+
+    .header-simulation {
+        height: 200px;
+        background-color: rgb(91, 215, 253);
+    }
+    .list-all {
+        width: 80%;
+        margin: 10% auto;
+    }
+    #find-plan {
+        display: inline-block;
+        width:40%;
+        font-size: 20px;
+    }
+    #go {
+        border-radius: 50%;
+        background-color:black;
+        color:white;
+        font-size:20px;
+    }
+    table {
+        font-size: 20px;
+        text-align: center;
+    }
+    #find-page {
+        display: inline-block;
+        width:7%;
+        font-size: 20px;
+        text-align: center;
+    }
+    .describe {
+        text-align:center
+    }
+}
+@media (min-width : 1200px) {
+    /* 右侧用于添加计划的悬浮窗 */
+    #add-plan-ul{
+        top:50%;
+    }
+
+    .header-simulation {
+        height: 113.15px;
+        background-color: rgb(91, 215, 253);
+    }
+    .list-all {
+        width: 80%;
+        margin: auto;
+    }
+}

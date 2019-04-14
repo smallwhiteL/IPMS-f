@@ -1,12 +1,4 @@
 /* 右侧用于添加计划的悬浮窗 */
-#add-plan-ul{
-    position:fixed;
-    top:55%;
-    right:50px;
-    width:15px;
-    z-index:400;
-    list-style-type: none;
-}
 #add-plan-ul li{height:50px;}
 #back-to-top{
     display:block;
@@ -26,6 +18,15 @@
 
 /* 在1200以上宽度没有设置的属性, 在这里设置也适用于1200以上宽度 */
 @media (min-width : 768px) {
+	/* 右侧用于添加计划的悬浮窗 */
+	#add-plan-ul{
+	    position:fixed;
+	    top:45%;
+	    right:50px;
+	    width:15px;
+	    z-index:400;
+	    list-style-type: none;
+	}
     /* 控制左侧预览窗口是否显示的按钮 */
     #toggle{
         margin-left: 46%;
@@ -137,6 +138,10 @@
 
 }
 @media (min-width : 1200px) {
+	/* 右侧用于添加计划的悬浮窗 */
+	#add-plan-ul{
+	    top:55%;
+	}
     /* 控制左侧预览窗口是否显示的按钮 */
     #toggle{
         position : fixed;

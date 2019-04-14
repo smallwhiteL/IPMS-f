@@ -32,6 +32,8 @@
 		<mvc:interceptor>
 			<!-- 拦截主页请求 -->
 			<mvc:mapping path="/home/**"/>
+			<mvc:mapping path="/common/**"/>
+			<mvc:mapping path="/fromHome/**"/>
 			<bean class="com.ipms.interceptor.LoginInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>

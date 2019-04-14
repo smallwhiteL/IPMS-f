@@ -23,7 +23,7 @@
 <body style="height: 100%; margin: auto; background: yellowgreen;">
 	
 	<%
-		// 判断session
+		// 判断session中是否含有登录信息
 		if (session.getAttribute("loginUser") != null) {
 			session.invalidate();
 		}

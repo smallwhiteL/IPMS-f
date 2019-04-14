@@ -33,7 +33,7 @@
         <div class="col-xs-4">
            <div class="col-xs-8 right-part-back-to-home">
 	        	<c:if test="${not empty otherPages}">
-	                <a href="javascript:;">回到首页</a>
+	                <a href="javascript:;" id="toHomePage">回到首页</a>
 	            </c:if>
            </div>
            <div class="col-xs-4 right-part-logout">
