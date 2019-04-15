@@ -6,6 +6,7 @@
 	<!-- 别名 -->
 	<typeAliases>
 		<package name="com.ipms.pojo"/>
+		<package name="com.ipms.utils"/>
 	</typeAliases>
 	
 </configuration>

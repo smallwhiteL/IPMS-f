@@ -231,18 +231,6 @@ function getPlanById(plan_id) {
 	});
 }
 
-//function toOneStatusPlan(status) {
-//	$.ajax({
-//		async : false,
-//		type: "post",
-//		url: "toOneStatusPlan.action",
-//		data: {"status" : status}
-//	});
-////	window.location.href="toOneStatusPlan.action?status=" + status;
-//	
-////	document.redictForm.submit();
-//}
-
 function redict1(){
 	document.redictForm1.submit();
 }

@@ -14,4 +14,19 @@ $(function(){
 	$("#toHomePage").click(function() {
 		location.href="../home/homePage";
 	});
+	
+//	$(".plan_describe").each(function(){
+//		_val = $(this).val(); // 详情内容
+//		if(_val.length > 11) {
+//			$(this).val(_val.substring(0, 8)); // 若超过12截取前9个字符
+//		}
+//	});
+//	
+//	$(".more").each(function(){
+//		_val = $(".plan_describe").val(); // 详情内容
+//		if(_val.length > 11) {
+//			$(this).val("..."); // 若超过12第10,11,12位用...代替
+//		}
+//	});
+	
 });

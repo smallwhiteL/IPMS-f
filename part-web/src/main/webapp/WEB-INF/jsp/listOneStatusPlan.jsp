@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -29,91 +30,25 @@
          </div>
          <table class="table table-bordered table-striped">
              <tr>
-                 <th style="text-align: center">#</th> <th style="text-align: center">计划标题</th> 
+                 <th style="text-align: center">计划ID</th> <th style="text-align: center">计划标题</th> 
                  <th style="text-align: center">开始时间</th> <th style="text-align: center">截止时间</th> 
                  <th style="text-align: center">计划描述</th> <th style="text-align: center">状态</th> 
                  <th style="text-align: center">操作</th>
              </tr>
-             <tr>
-                 <td>1</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">asds从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-              </tr>
-             <tr>
-                 <td>2</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>3</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>4</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>5</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>6</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>7</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>8</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>9</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
-             <tr>
-                 <td>10</td> <td>asd</td> <td>2015-09-01</td> <td>2019-06-30</td> 
-                 <td class="describe">从头到尾从头到尾<span class="more"></span></td> 
-                 <td>未完成</td>
-                 <td><button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
-                     <button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
-                 </td>
-             </tr>
+             <c:forEach items="${firstPageList}" var="plan" end="9" varStatus="status">
+             	<tr>
+             		<td class="plan_id">${plan.plan_id}</td>
+             		<td class="plan_title">${plan.plan_title}</td>
+             		<td class="plan_starting_time">${plan.plan_starting_time}</td>
+             		<td class="plan_ending_time">${plan.plan_ending_time}</td>
+             		<td class="plan_describe">${plan.plan_describe}<span class="more"></span></td>
+             		<td class="plan_status">${plan.plan_status}</td>
+             		<td>
+             			<button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
+                     	<button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
+                 	</td>
+             	</tr>
+             </c:forEach>
          </table>
          <nav>
              <ul class="pager">

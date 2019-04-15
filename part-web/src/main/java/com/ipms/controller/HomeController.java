@@ -31,7 +31,7 @@ public class HomeController {
 	@RequestMapping("/homePage")
 	public String showHomePage(Model model, HttpServletRequest request) {
 		
-		// 从session获取登录的用户
+		// 从session获取登录的用户的id
 		User loginUser = (User) request.getSession().getAttribute("loginUser");
 		String user_id = loginUser.getUser_id();
 		

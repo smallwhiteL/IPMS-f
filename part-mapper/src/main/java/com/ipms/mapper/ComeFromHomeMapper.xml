@@ -3,5 +3,23 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ipms.mapper.ComeFromHomeMapper">
-
+	
+	<sql id="selectPlan">
+		SELECT * FROM ipms_plan
+	</sql>
+	
+	<sql id="selectCount">
+		SELECT COUNT(*) FROM ipms_plan
+	</sql>
+	
+	<!-- 通过状态和用户ID查询计划数量 -->
+	<select id="findPlanAmountConditional" parameterType="QueryUtils" resultType="Integer">
+		<include refid="selectCount"/> WHERE plan_status = #{status} AND plan_userId = #{plan_userId}
+	</select>
+	
+	<!-- 通过状态和用户ID查询第一页计划 -->
+	<select id="findFirstPagePlans" parameterType="QueryUtils" resultType="Plan">
+		<include refid="selectPlan"/> WHERE plan_status = #{status} AND plan_userId = #{plan_userId} LIMIT 0,10
+	</select>
+	
 </mapper>
