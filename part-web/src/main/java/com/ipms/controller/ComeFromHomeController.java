@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.ipms.pojo.FormatPlanToJson;
@@ -27,16 +26,16 @@ public class ComeFromHomeController {
 	private ComeFromHomeService comeFromHomeService;
 	
 	@RequestMapping("/withStatus")
-	public String withStatusPage(@ModelAttribute("status") String status, HttpServletRequest request, Model model) {
+	public String withStatusPage(HttpServletRequest request, Model model) {
 		
 		// 从session获取登录的用户的id
 		User loginUser = (User) request.getSession().getAttribute("loginUser");
 		String user_id = loginUser.getUser_id();
-		Integer plan_status = Integer.parseInt(status);
+		Integer plan_status = (Integer) request.getSession().getAttribute("status");
 		// 将状态, 用户ID, 
 		QueryUtils queryUtils = new QueryUtils(plan_status, user_id, 0);
 		// 通过查询工具类查询分页信息
-		Page<Plan> page = comeFromHomeService.findPage(queryUtils);
+		Page page = comeFromHomeService.findFirstPage(queryUtils);
 		// 未转为Json格式的Plan
 		List<Plan> firstPagePlans = comeFromHomeService.findFirstPagePlans(queryUtils);
 		// 转为Json格式的Plan

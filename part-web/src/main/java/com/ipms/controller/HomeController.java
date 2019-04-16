@@ -13,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.ipms.pojo.FormatPlanToJson;
 import com.ipms.pojo.Plan;
 import com.ipms.pojo.User;
@@ -137,8 +135,8 @@ public class HomeController {
 	
 	// 去到查看某个状态的所有计划的页面
 	@RequestMapping("/toOneStatusPlan") // 此处使用RedirectAttributes可以隐藏重定向到其他controller时所带的参数
-	public String toOneStatusPlan(Integer status, HttpServletRequest request, RedirectAttributes redirectAttributes) {
-		redirectAttributes.addFlashAttribute("status", status);
+	public String toOneStatusPlan(Integer status, HttpServletRequest request) {
+		request.getSession().setAttribute("status", status);
 		request.getSession().setAttribute("otherPages", "otherPages");
 		return "redirect:../fromHome/withStatus";
 	}

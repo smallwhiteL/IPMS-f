@@ -8,7 +8,7 @@ import com.ipms.utils.QueryUtils;
 
 public interface ComeFromHomeService {
 	
-	Page<Plan> findPage(QueryUtils queryUtils);
+	Page findFirstPage(QueryUtils queryUtils);
 	
 	List<Plan> findFirstPagePlans(QueryUtils queryUtils);
 	

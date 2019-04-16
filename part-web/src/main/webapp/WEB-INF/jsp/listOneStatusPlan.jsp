@@ -41,10 +41,11 @@
              		<td class="plan_title">${plan.plan_title}</td>
              		<td class="plan_starting_time">${plan.plan_starting_time}</td>
              		<td class="plan_ending_time">${plan.plan_ending_time}</td>
-             		<td class="plan_describe">${plan.plan_describe}<span class="more"></span></td>
+             		<td class="plan_describe">${plan.plan_describe}</td>
              		<td class="plan_status">${plan.plan_status}</td>
              		<td>
-             			<button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>&nbsp;
+             			<button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>
+             			<span class="format"></span>
                      	<button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
                  	</td>
              	</tr>
@@ -54,7 +55,7 @@
              <ul class="pager">
                  <li><a href="javascript:;">首页</a></li>
                  <li><a href="javascript:;">&larr;上一页</a></li>
-                 <input type="text" class="form-control" id="find-page" value="1">
+                 <input type="text" class="form-control" id="find-page" value="${page.page_index}">
                  <button id="go">Go</button>
                  <li><a href="javascript:;">下一页&rarr;</a></li>
                  <li><a href="javascript:;">尾页</a></li>
