@@ -17,9 +17,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectCount"/> WHERE plan_status = #{status} AND plan_userId = #{plan_userId}
 	</select>
 	
-	<!-- 通过状态和用户ID查询第一页计划 -->
-	<select id="findFirstPagePlans" parameterType="QueryUtils" resultType="Plan">
-		<include refid="selectPlan"/> WHERE plan_status = #{status} AND plan_userId = #{plan_userId} LIMIT 0,10
+	<!-- 通过状态和用户ID查询分页信息 -->
+	<select id="findPagePlans" parameterType="QueryUtils" resultType="Plan">
+		<include refid="selectPlan"/> WHERE plan_status = #{status} AND plan_userId = #{plan_userId} LIMIT #{start_row},10
 	</select>
 	
 </mapper>

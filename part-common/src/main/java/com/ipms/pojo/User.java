@@ -1,7 +1,11 @@
 package com.ipms.pojo;
 
 import java.util.Date;
-
+/**
+ * 用户模型
+ * @author ASUS
+ *
+ */
 public class User {
 	private String user_id;
 	private String username;

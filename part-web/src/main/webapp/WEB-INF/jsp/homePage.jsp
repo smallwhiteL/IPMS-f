@@ -72,6 +72,8 @@
 	            <div class="panel-footer">
 	            	<form name="redictForm1" action="toOneStatusPlan.action" method="post">
 	            		<input type="hidden" name="status" value="1">
+	            		<!-- 其他页的分页第一页 -->
+        				<input type="hidden" name="otherPageNum" value="1">
 	            	</form>
 	                <a href="javascript:;" onclick="redict1()">查看所有>></a>
 	            </div>
@@ -114,6 +116,8 @@
 	            <div class="panel-footer">
 	            	<form name="redictForm2" action="toOneStatusPlan.action" method="post">
 	            		<input type="hidden" name="status" value="2">
+	            		<!-- 其他页的分页第一页 -->
+        				<input type="hidden" name="otherPageNum" value="1">
 	            	</form>
 	                <a href="javascript:;" onclick="redict2()">查看所有>></a>
 	            </div>
@@ -156,6 +160,8 @@
 	            <div class="panel-footer">
 	            	<form name="redictForm3" action="toOneStatusPlan.action" method="post">
 	            		<input type="hidden" name="status" value="3">
+	            		<!-- 其他页的分页第一页 -->
+        				<input type="hidden" name="otherPageNum" value="1">
 	            	</form>
 	                <a href="javascript:;" onclick="redict3()">查看所有>></a>
 	            </div>
@@ -198,6 +204,8 @@
 	            <div class="panel-footer">
 	            	<form name="redictForm4" action="toOneStatusPlan.action" method="post">
 	            		<input type="hidden" name="status" value="4">
+	            		<!-- 其他页的分页第一页 -->
+        				<input type="hidden" name="otherPageNum" value="1">
 	            	</form>
 	                <a href="javascript:;" onclick="redict4()">查看所有>></a>
 	            </div>

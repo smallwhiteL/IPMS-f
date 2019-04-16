@@ -25,7 +25,7 @@
          <div id="go-to-concrete">
              <div class="form-group">
                  <input type="text" class="form-control" id="find-plan" placeholder="输入计划标题">
-                 <button id="go">查找</button>
+                 <button id="go-like" class="go">查找</button>
              </div>
          </div>
          <table class="table table-bordered table-striped">
@@ -35,14 +35,14 @@
                  <th style="text-align: center">计划描述</th> <th style="text-align: center">状态</th> 
                  <th style="text-align: center">操作</th>
              </tr>
-             <c:forEach items="${firstPageList}" var="plan" end="9" varStatus="status">
+             <c:forEach items="${page.formatPlanToJsons}" var="plan" end="9" varStatus="status">
              	<tr>
-             		<td class="plan_id">${plan.plan_id}</td>
-             		<td class="plan_title">${plan.plan_title}</td>
-             		<td class="plan_starting_time">${plan.plan_starting_time}</td>
-             		<td class="plan_ending_time">${plan.plan_ending_time}</td>
-             		<td class="plan_describe">${plan.plan_describe}</td>
-             		<td class="plan_status">${plan.plan_status}</td>
+             		<td class="plan_id_${status.index}">${plan.plan_id}</td>
+             		<td class="plan_title_${status.index}">${plan.plan_title}</td>
+             		<td class="plan_starting_time_${status.index}">${plan.plan_starting_time}</td>
+             		<td class="plan_ending_time_${status.index}">${plan.plan_ending_time}</td>
+             		<td class="plan_describe_${status.index}">${plan.plan_describe}</td>
+             		<td class="plan_status_${status.index}">${plan.plan_status}</td>
              		<td>
              			<button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>
              			<span class="format"></span>
@@ -53,12 +53,28 @@
          </table>
          <nav>
              <ul class="pager">
-                 <li><a href="javascript:;">首页</a></li>
-                 <li><a href="javascript:;">&larr;上一页</a></li>
+           		 <form name="redictForm" id="redictForm" action="withStatusOthers.action" method="post">
+            		<input type="hidden" name="otherPageNum" id="otherPageNum" value="${page.page_index}">
+            		<input type="hidden" name="pageTotal" id="pageTotal" value="${page.pageNumber}">
+            	 </form>
+            	 <c:if test="${page.page_index == 1}">
+            	 	<li><a href="javascript:;">首页</a></li>
+                 	<li><a href="javascript:;">&larr;上一页</a></li>
+            	 </c:if>
+            	 <c:if test="${page.page_index != 1}">
+                 <li><a href="javascript:;" onclick="redict(1)">首页</a></li>
+                 <li><a href="javascript:;" onclick="redict(${page.page_index - 1})">&larr;上一页</a></li>
+                 </c:if>
                  <input type="text" class="form-control" id="find-page" value="${page.page_index}">
-                 <button id="go">Go</button>
-                 <li><a href="javascript:;">下一页&rarr;</a></li>
-                 <li><a href="javascript:;">尾页</a></li>
+                 <button id="go-page" class="go">Go</button>
+                 <c:if test="${page.page_index == page.pageNumber}">
+                 	<li><a href="javascript:;">下一页&rarr;</a></li>
+                	<li><a href="javascript:;">尾页</a></li>
+                 </c:if>
+                 <c:if test="${page.page_index != page.pageNumber}">
+	                 <li><a href="javascript:;" onclick="redict(${page.page_index + 1})">下一页&rarr;</a></li>
+	                 <li><a href="javascript:;" onclick="redict(${page.pageNumber})">尾页</a></li>
+                 </c:if>
              </ul>
          </nav>
      </div>

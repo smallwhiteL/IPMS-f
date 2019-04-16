@@ -217,14 +217,14 @@ function getPlanById(plan_id) {
 			$("#plan-describe-detail").val(data.plan_describe);
 			$("#plan-start-detail").val(data.plan_starting_time);
 			$("#plan-end-detail").val(data.plan_ending_time);
-			if (data.plan_status == "1") {
-				$("#toDo-status").attr("checked","checked");
-			} else if (data.plan_status == "2") {
-				$("#doing-status").attr("checked","checked");
-			} else if (data.plan_status == "3") {
-				$("#done-status").attr("checked","checked");
-			} else if (data.plan_status == "4") {
-				$("#failed-status").attr("checked","checked");
+			if (data.plan_status == 1) {
+				$("#toDo-status").prop("checked",true);
+			} else if (data.plan_status == 2) {
+				$("#doing-status").prop("checked",true);
+			} else if (data.plan_status == 3) {
+				$("#done-status").prop("checked",true);
+			} else if (data.plan_status == 4) {
+				$("#failed-status").prop("checked",true);
 			}
 			
 		}

@@ -1,5 +1,7 @@
 package com.ipms.service.impl;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ipms.mapper.ComeFromHomeMapper;
+import com.ipms.pojo.FormatPlanToJson;
 import com.ipms.pojo.Plan;
 import com.ipms.service.ComeFromHomeService;
 import com.ipms.utils.Page;
@@ -21,30 +24,71 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 	@Autowired 
 	private ComeFromHomeMapper comeFromHomeMapper;
 	
+	private Page page = new Page();
+
 	@Override
-	public Page findFirstPage(QueryUtils queryUtils) {
-		Page page = new Page();
+	/**
+	 * 将非格式化List<Plan>转为List<FormatPlanToJson>的公共方法
+	 */
+	public List<FormatPlanToJson> getFormatPlanCommonFunc(List<Plan> PagePlans, QueryUtils queryUtils) {
+		
+		// 转为Json格式的Plan
+		List<FormatPlanToJson> formatPlanToJsons = new ArrayList<>();
+		// 遍历查询到的Plan
+		for (Plan plan : PagePlans) {
+			// Date -> String
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			String plan_starting_time = sdf.format(plan.getPlan_starting_time());
+			String plan_ending_time = sdf.format(plan.getPlan_ending_time());
+			// 判断状态并改为中文
+			String formatStatus = "";
+			if (plan.getPlan_status() == 1) {
+				formatStatus = "待开始";
+			} else if (plan.getPlan_status() == 2) {
+				formatStatus = "进行中";
+			} else if (plan.getPlan_status() == 3) {
+				formatStatus = "已结束";
+			} else if (plan.getPlan_status() == 4) {
+				formatStatus = "已逾期";
+			}
+			// 将每一项Plan格式化为Json以输出到前端
+			FormatPlanToJson formatPlanToJson = new FormatPlanToJson(plan.getPlan_id()+"", plan.getPlan_title(),
+					plan_starting_time, plan_ending_time, plan.getPlan_describe(), formatStatus);
+			// 将格式化后的Plan添加到List中
+			formatPlanToJsons.add(formatPlanToJson);
+		}
+		return formatPlanToJsons;
+	}
+	
+	@Override
+	public Page findPage(QueryUtils queryUtils) {
+		
 		// 每页显示的计划数10
 		page.setAmountPerPage(10);
+		
 		// 通过状态和用户ID查询到的计划总数
 		Integer pageTotal = comeFromHomeMapper.findPlanAmountConditional(queryUtils);
 		page.setItemsTotal(pageTotal);
+		
 		// 总共多少页
 		Integer pageNumber = pageTotal / 10 + 1;
 		page.setPageNumber(pageNumber);
-		
-		// 每页的起始行
-		page.setStart_row(queryUtils.getStart_row());
-		
 		// 页号
-		page.setPage_index(page.getStart_row() / 10 + 1);
+		page.setPage_index(queryUtils.getPage_index());
+		
+		// 未转为Json格式的Plan
+		List<Plan> firstPagePlans = findPagePlans(queryUtils);
+		// 转为Json格式的Plan
+		List<FormatPlanToJson> formatPlanToJsons = getFormatPlanCommonFunc(firstPagePlans, queryUtils);
+		page.setFormatPlanToJsons(formatPlanToJsons);
 		
 		return page;
 	}
 
 	@Override
-	public List<Plan> findFirstPagePlans(QueryUtils queryUtils) {
-		return comeFromHomeMapper.findFirstPagePlans(queryUtils);
+	public List<Plan> findPagePlans(QueryUtils queryUtils) {
+		return comeFromHomeMapper.findPagePlans(queryUtils);
 	}
+
 
 }

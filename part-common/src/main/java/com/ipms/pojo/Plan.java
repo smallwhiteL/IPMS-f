@@ -1,7 +1,11 @@
 package com.ipms.pojo;
 
 import java.util.Date;
-
+/**
+ * 计划模型
+ * @author ASUS
+ *
+ */
 public class Plan {
 	private Integer plan_id;
 	private String plan_title;

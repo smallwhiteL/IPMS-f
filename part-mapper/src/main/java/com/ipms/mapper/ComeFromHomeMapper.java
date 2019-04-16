@@ -9,6 +9,5 @@ public interface ComeFromHomeMapper {
 	
 	Integer findPlanAmountConditional(QueryUtils queryUtils);
 	
-	List<Plan> findFirstPagePlans(QueryUtils queryUtils);
-	
+	List<Plan> findPagePlans(QueryUtils queryUtils);
 }
