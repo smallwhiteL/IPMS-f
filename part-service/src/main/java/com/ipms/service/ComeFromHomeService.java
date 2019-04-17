@@ -15,4 +15,8 @@ public interface ComeFromHomeService {
 	
 	List<Plan> findPagePlans(QueryUtils queryUtils);
 	
+	Page findLikePage(QueryUtils queryUtils);
+	
+	List<Plan> findLikePagePlans(QueryUtils queryUtils);
+	
 }

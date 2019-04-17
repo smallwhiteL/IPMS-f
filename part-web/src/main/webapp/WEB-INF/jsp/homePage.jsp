@@ -24,6 +24,8 @@
 	<%
 		// 移除从其他页面的session信息
 		if (session.getAttribute("otherPages") != null) {
+			session.removeAttribute("status");
+			session.removeAttribute("queryStr");
 			session.removeAttribute("otherPages");
 		}
 	%>
@@ -224,10 +226,12 @@
    	<%@ include file="/WEB-INF/jsp/plan-detailAndEdit.jsp" %>
 
     <!-- plan find -->
-    <div id="go-to-concrete">
+    <div id="go-to-likePage">
         <div class="form-group">
-            <input type="text" class="form-control" style="width: 40%; display: inline-block; font-size: 25px; 
-            " placeholder="输入计划标题">
+        	<form name="redictToLikePage" id="redictForm01" action="../fromHome/findLikeFirst.action" method="post">
+	            <input type="text" class="form-control" style="width: 40%; display: inline-block; font-size: 25px;" 
+	            id="find-plan" name="queryStr" placeholder="输入计划标题">
+           	</form>
             <button id="go">查找</button>
         </div>
     </div>

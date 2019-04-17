@@ -10,6 +10,8 @@ public class QueryUtils {
 	private String plan_userId;
 	private Integer page_index;
 	private Integer start_row;
+	private String queryStr;
+	
 	public Integer getStatus() {
 		return status;
 	}
@@ -34,6 +36,12 @@ public class QueryUtils {
 	public void setStart_row(Integer start_row) {
 		this.start_row = start_row;
 	}
+	public String getQueryStr() {
+		return queryStr;
+	}
+	public void setQueryStr(String queryStr) {
+		this.queryStr = queryStr;
+	}
 	public QueryUtils() {
 		super();
 	}
@@ -44,7 +52,21 @@ public class QueryUtils {
 		this.page_index = page_index;
 		this.start_row = start_row;
 	}
-	
+	public QueryUtils(String plan_userId, Integer page_index, Integer start_row, String queryStr) {
+		super();
+		this.plan_userId = plan_userId;
+		this.page_index = page_index;
+		this.start_row = start_row;
+		this.queryStr = queryStr;
+	}
+	public QueryUtils(Integer status, String plan_userId, Integer page_index, Integer start_row, String queryStr) {
+		super();
+		this.status = status;
+		this.plan_userId = plan_userId;
+		this.page_index = page_index;
+		this.start_row = start_row;
+		this.queryStr = queryStr;
+	}
 	
 	
 }

@@ -30,12 +30,12 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 	/**
 	 * 将非格式化List<Plan>转为List<FormatPlanToJson>的公共方法
 	 */
-	public List<FormatPlanToJson> getFormatPlanCommonFunc(List<Plan> PagePlans, QueryUtils queryUtils) {
+	public List<FormatPlanToJson> getFormatPlanCommonFunc(List<Plan> plansPage, QueryUtils queryUtils) {
 		
 		// 转为Json格式的Plan
 		List<FormatPlanToJson> formatPlanToJsons = new ArrayList<>();
 		// 遍历查询到的Plan
-		for (Plan plan : PagePlans) {
+		for (Plan plan : plansPage) {
 			// Date -> String
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			String plan_starting_time = sdf.format(plan.getPlan_starting_time());
@@ -61,6 +61,9 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 	}
 	
 	@Override
+	/**
+	 * 通过状态, UserId, 页号, 页起始行查询该页信息
+	 */
 	public Page findPage(QueryUtils queryUtils) {
 		
 		// 每页显示的计划数10
@@ -77,9 +80,9 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 		page.setPage_index(queryUtils.getPage_index());
 		
 		// 未转为Json格式的Plan
-		List<Plan> firstPagePlans = findPagePlans(queryUtils);
+		List<Plan> plansPage = findPagePlans(queryUtils);
 		// 转为Json格式的Plan
-		List<FormatPlanToJson> formatPlanToJsons = getFormatPlanCommonFunc(firstPagePlans, queryUtils);
+		List<FormatPlanToJson> formatPlanToJsons = getFormatPlanCommonFunc(plansPage, queryUtils);
 		page.setFormatPlanToJsons(formatPlanToJsons);
 		
 		return page;
@@ -90,5 +93,47 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 		return comeFromHomeMapper.findPagePlans(queryUtils);
 	}
 
+	
+	@Override
+	/**
+	 * 模糊查询分页信息
+	 */
+	public Page findLikePage(QueryUtils queryUtils) {
+		
+		// 每页显示的计划数10
+		page.setAmountPerPage(10);
+		
+		// 通过状态和用户ID查询到的计划总数
+		Integer pageTotal = 0;
+		if(queryUtils.getStatus() == null) {
+			pageTotal = comeFromHomeMapper.findLikeAmountConditional01(queryUtils);
+		} else {
+			pageTotal = comeFromHomeMapper.findLikeAmountConditional(queryUtils);
+		}
+		page.setItemsTotal(pageTotal);
+		
+		// 总共多少页
+		Integer pageNumber = pageTotal / 10 + 1;
+		page.setPageNumber(pageNumber);
+		
+		// 页号
+		page.setPage_index(queryUtils.getPage_index());
+		
+		// 未转为Json格式的Plan
+		List<Plan> plansPage = findLikePagePlans(queryUtils);
+		// 转为Json格式的Plan
+		List<FormatPlanToJson> formatPlanToJsons = getFormatPlanCommonFunc(plansPage, queryUtils);
+		page.setFormatPlanToJsons(formatPlanToJsons);
+		
+		return page;
+	}
 
+	@Override
+	public List<Plan> findLikePagePlans(QueryUtils queryUtils) {
+		if(queryUtils.getStatus() != null) {
+			return comeFromHomeMapper.findLikePlans(queryUtils);
+		}
+		return comeFromHomeMapper.findLikePlans01(queryUtils);
+	}
+	
 }

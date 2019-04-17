@@ -137,6 +137,7 @@ public class HomeController {
 	// 去到查看某个状态的所有计划的页面
 	@RequestMapping("/toOneStatusPlan")
 	public ModelAndView toOneStatusPlan(Integer status, HttpServletRequest request) {
+		// 将status放入session, 并将非主业标志也放入
 		request.getSession().setAttribute("status", status);
 		request.getSession().setAttribute("otherPages", "otherPages");
 		ModelAndView modelAndView = new ModelAndView("redirect:../fromHome/withStatusFirst");

@@ -106,7 +106,7 @@
         clear: both;
     }
     /* plan date list */
-    #go-to-concrete {
+    #go-to-likePage {
         float: left;
         width:70%;
         font-size: 25px;
@@ -186,7 +186,7 @@
         margin-top: -5%;
     }
     /* plan date list */
-    #go-to-concrete {
+    #go-to-likePage {
         padding-top: 1%;
     }
     #year {

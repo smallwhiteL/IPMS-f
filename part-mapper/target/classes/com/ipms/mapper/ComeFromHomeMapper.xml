@@ -22,4 +22,30 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<include refid="selectPlan"/> WHERE plan_status = #{status} AND plan_userId = #{plan_userId} LIMIT #{start_row},10
 	</select>
 	
+	<!-- 模糊查询计划数量,带状态 -->
+	<select id="findLikeAmountConditional" parameterType="QueryUtils" resultType="Integer">
+		<include refid="selectCount"/>
+		WHERE plan_status = #{status} AND plan_userId = #{plan_userId} AND plan_title LIKE "%"#{queryStr}"%"
+	</select>
+	
+	<!-- 模糊查询分页信息,带状态 -->
+	<select id="findLikePlans" parameterType="QueryUtils" resultType="Plan">
+		<include refid="selectPlan"/>
+		WHERE	plan_status = #{status}	AND plan_userId = #{plan_userId} AND plan_title LIKE "%"#{queryStr}"%"
+		LIMIT #{start_row},10
+	</select>
+	
+	<!-- 模糊查询计划数量,不带状态 -->
+	<select id="findLikeAmountConditional01" parameterType="QueryUtils" resultType="Integer">
+		<include refid="selectCount"/>
+		WHERE plan_userId = #{plan_userId} AND plan_title LIKE "%"#{queryStr}"%"
+	</select>
+	
+	<!-- 模糊查询分页信息,不带状态 -->
+	<select id="findLikePlans01" parameterType="QueryUtils" resultType="Plan">
+		<include refid="selectPlan"/>
+		WHERE plan_userId = #{plan_userId} AND plan_title LIKE "%"#{queryStr}"%"
+		LIMIT #{start_row},10
+	</select>
+	
 </mapper>

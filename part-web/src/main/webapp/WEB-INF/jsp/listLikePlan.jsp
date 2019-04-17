@@ -22,9 +22,11 @@
 	
 	<div class="list-all">
          <!-- plan find -->
-         <div id="go-to-concrete">
+         <div id="go-to-likePage">
              <div class="form-group">
-                 <input type="text" class="form-control" id="find-plan" placeholder="输入计划标题">
+             	 <form name="redictToLikePage" id="redictForm01" action="findLikeFirst.action" method="post">
+                 	<input type="text" class="form-control" id="find-plan" name="queryStr" placeholder="输入计划标题">
+               	 </form>
                  <button id="go-like" class="go">查找</button>
              </div>
          </div>
@@ -44,16 +46,17 @@
              		<td class="plan_describe_${status.index}">${plan.plan_describe}</td>
              		<td class="plan_status_${status.index}">${plan.plan_status}</td>
              		<td>
-             			<button type="button" class="btn btn-primary" onclick="updatePlan(5)">修改</button>
+             			<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#plan-detail"
+             			 onclick="updatePlan(${plan.plan_id})">修改</button>
              			<span class="format"></span>
-                     	<button type="button" class="btn btn-danger" onclick="deletePlan(5)">删除</button>
+                     	<button type="button" class="btn btn-danger" onclick="deletePlan(${plan.plan_id})">删除</button>
                  	</td>
              	</tr>
              </c:forEach>
          </table>
          <nav>
              <ul class="pager">
-           		 <form name="redictForm" id="redictForm" action="withStatusOthers.action" method="post">
+           		 <form name="redictForm" id="redictForm" action="findLikeOthers.action" method="post">
             		<input type="hidden" name="otherPageNum" id="otherPageNum" value="${page.page_index}">
             		<input type="hidden" name="pageTotal" id="pageTotal" value="${page.pageNumber}">
             	 </form>
@@ -79,6 +82,9 @@
          </nav>
      </div>
 
+	 <!-- 任务详情及修改框 -->
+	 <%@ include file="/WEB-INF/jsp/plan-detailAndEdit.jsp" %>
+
      <!-- floating window to add plan -->
      <ul id="add-plan-ul">
          <li style="display:none;"><button id="back-to-top" style="border:none"></button></li>
@@ -88,5 +94,8 @@
              </a>
          </li>
      </ul>
+     
+     <!-- 添加任务框 -->
+   	 <%@ include file="/WEB-INF/jsp/addPlan.jsp" %>
 </body>
 </html>

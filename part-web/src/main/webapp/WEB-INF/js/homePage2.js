@@ -77,7 +77,8 @@ $(function(){
             $("#update").html("修改");
         }
     });
-
+    
+    // 添加任务
     $("#add").click(function(){
         
         var add_start_time = new Date(Date.parse(plan_start.val()));
@@ -162,6 +163,7 @@ $(function(){
         $(".status-list").css({"display": "none"});
     });
 
+    // 判断今天和截止日期的大小,确定是否显示状态按钮,而修改则不需要,因为修改操作一定存在状态
     $("#plan-end").on("input propertychange", function () {
         var add_end_time = new Date(Date.parse(plan_end.val()));
         var today = new Date();
@@ -191,6 +193,13 @@ $(function(){
 		  if (_val.length > 255) {  //当文本框内容长度超过255，只取0到255的内容
 			 $this.val(_val.substring(0, 255));
 		  }
+	});
+	
+	// 去到模糊查询页
+	$("#go").click(function() {
+		if($("#find-plan").val() != ""){
+			document.redictToLikePage.submit();
+		}
 	});
 	
 });
