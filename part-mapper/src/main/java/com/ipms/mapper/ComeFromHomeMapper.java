@@ -19,4 +19,7 @@ public interface ComeFromHomeMapper {
 	Integer findLikeAmountConditional01(QueryUtils queryUtils);
 	
 	List<Plan> findLikePlans01(QueryUtils queryUtils);
+	
+	// 根据截止日期及用户ID查询计划数量
+	Integer findByEndTimeAndUserId(QueryUtils queryUtils);
 }

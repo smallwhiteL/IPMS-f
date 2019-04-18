@@ -1,4 +1,5 @@
 package com.ipms.utils;
+
 /**
  * 查询工具类
  * @author ASUS
@@ -11,6 +12,7 @@ public class QueryUtils {
 	private Integer page_index;
 	private Integer start_row;
 	private String queryStr;
+	private String plan_ending_time;
 	
 	public Integer getStatus() {
 		return status;
@@ -42,6 +44,12 @@ public class QueryUtils {
 	public void setQueryStr(String queryStr) {
 		this.queryStr = queryStr;
 	}
+	public String getPlan_ending_time() {
+		return plan_ending_time;
+	}
+	public void setPlan_ending_time(String plan_ending_time) {
+		this.plan_ending_time = plan_ending_time;
+	}
 	public QueryUtils() {
 		super();
 	}
@@ -67,6 +75,10 @@ public class QueryUtils {
 		this.start_row = start_row;
 		this.queryStr = queryStr;
 	}
-	
+	public QueryUtils(String plan_userId, String plan_ending_time) {
+		super();
+		this.plan_userId = plan_userId;
+		this.plan_ending_time = plan_ending_time;
+	}
 	
 }

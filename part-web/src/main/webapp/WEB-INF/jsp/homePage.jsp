@@ -228,8 +228,9 @@
     <!-- plan find -->
     <div id="go-to-likePage">
         <div class="form-group">
-        	<form name="redictToLikePage" id="redictForm01" action="../fromHome/findLikeFirst.action" method="post">
-	            <input type="text" class="form-control" style="width: 40%; display: inline-block; font-size: 25px;" 
+        	<form name="redictToLikePage" action="../fromHome/findLikeFirst.action"
+        	 method="post" style="display: inline">
+	            <input type="text" class="form-control" style="width: 40%; display: inline-block; font-size: 25px;"
 	            id="find-plan" name="queryStr" placeholder="输入计划标题">
            	</form>
             <button id="go">查找</button>
@@ -242,18 +243,42 @@
             </select>
             <img id="animal-year">
         </div>
-        <div class="month" id="first" style="margin-left:0"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/January.svg"></a></div>
-        <div class="month" id="second"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/February.svg"></a></div>
-        <div class="month" id="third"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/March.svg"></a></div>
-        <div class="month" id="fourth" style="margin-left:0"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/April.svg"></a></div>
-        <div class="month" id="fifth"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/May.svg"></a></div>
-        <div class="month" id="sixth"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/June.svg"></a></div>
-        <div class="month" id="seventh" style="margin-left:0"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/July.svg"></a></div>
-        <div class="month" id="eighth"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/August.svg"></a></div>
-        <div class="month" id="ninth"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/September.svg"></a></div>
-        <div class="month" id="tenth" style="margin-left:0"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/October.svg"></a></div>
-        <div class="month" id="eleventh"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/November.svg"></a></div>
-        <div class="month" id="twelfth"><a href="javascript:;"><img src="${pageContext.request.contextPath}/images/month/December.svg"></a></div>
+        <div class="month" id="first" style="margin-left:0"><a href="javascript:;" id="January" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/January.svg">
+        </a></div>
+        <div class="month" id="second"><a href="javascript:;" id="February" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/February.svg">
+       	</a></div>
+        <div class="month" id="third"><a href="javascript:;" id="March" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/March.svg">
+        </a></div>
+        <div class="month" id="fourth" style="margin-left:0"><a href="javascript:;" id="April" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/April.svg">
+        </a></div>
+        <div class="month" id="fifth"><a href="javascript:;" id="May" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/May.svg">
+        </a></div>
+        <div class="month" id="sixth"><a href="javascript:;" id="June" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/June.svg">
+        </a></div>
+        <div class="month" id="seventh" style="margin-left:0"><a href="javascript:;" id="July" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/July.svg">
+        </a></div>
+        <div class="month" id="eighth"><a href="javascript:;" id="August" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/August.svg">
+        </a></div>
+        <div class="month" id="ninth"><a href="javascript:;" id="September" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/September.svg">
+        </a></div>
+        <div class="month" id="tenth" style="margin-left:0"><a href="javascript:;" id="October" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/October.svg">
+        </a></div>
+        <div class="month" id="eleventh"><a href="javascript:;" id="November" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/November.svg">
+        </a></div>
+        <div class="month" id="twelfth"><a href="javascript:;" id="December" class="toMonth">
+        	<img src="${pageContext.request.contextPath}/images/month/December.svg">
+        </a></div>
     </div>
 
     <!-- floating window to add plan -->
@@ -268,6 +293,11 @@
     
     <!-- 添加任务框 -->
     <%@ include file="/WEB-INF/jsp/addPlan.jsp" %>
+    
+    <form name="redictToMonthPage" action="../fromHome/toMonthPage.action"
+   	 method="post" style="display: inline">
+         <input type="hidden" class="form-control" id="find-month" name="yearAndMonth">
+   	</form>
     
 </body>
 </html>

@@ -1,7 +1,6 @@
 var plan_id;
 
 $(function(){
-	var i;
 	
 	// 注销
 	$("#logout").click(function() {
@@ -15,6 +14,8 @@ $(function(){
 	$("#toHomePage").click(function() {
 		location.href="../home/homePage";
 	});
+	
+	var i;
 	
 	// 遍历计划描述
 	for (i = 0; i < 10; i++) {

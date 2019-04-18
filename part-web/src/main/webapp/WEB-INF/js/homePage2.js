@@ -202,6 +202,36 @@ $(function(){
 		}
 	});
 	
+	// 去到某月页面
+	$(".toMonth").click(function() {
+		if ($(this).attr('id') == "January") {
+			$("#find-month").val($("#select-list").val() + "-01");
+		} else if ($(this).attr('id') == "February") {
+			$("#find-month").val($("#select-list").val() + "-02");
+		} else if ($(this).attr('id') == "March") {
+			$("#find-month").val($("#select-list").val() + "-03");
+		} else if ($(this).attr('id') == "April") {
+			$("#find-month").val($("#select-list").val() + "-04");
+		} else if ($(this).attr('id') == "May") {
+			$("#find-month").val($("#select-list").val() + "-05");
+		} else if ($(this).attr('id') == "June") {
+			$("#find-month").val($("#select-list").val() + "-06");
+		} else if ($(this).attr('id') == "July") {
+			$("#find-month").val($("#select-list").val() + "-07");
+		} else if ($(this).attr('id') == "August") {
+			$("#find-month").val($("#select-list").val() + "-08");
+		} else if ($(this).attr('id') == "September") {
+			$("#find-month").val($("#select-list").val() + "-09");
+		} else if ($(this).attr('id') == "October") {
+			$("#find-month").val($("#select-list").val() + "-10");
+		} else if ($(this).attr('id') == "November") {
+			$("#find-month").val($("#select-list").val() + "-11");
+		} else if ($(this).attr('id') == "December") {
+			$("#find-month").val($("#select-list").val() + "-12");
+		}
+		document.redictToMonthPage.submit();
+	});
+	
 });
 
 function deletePlan(plan_id) {

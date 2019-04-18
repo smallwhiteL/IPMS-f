@@ -48,4 +48,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		LIMIT #{start_row},10
 	</select>
 	
+	<!-- 根据截止时间和用户ID查询计划数量 -->
+	<select id="findByEndTimeAndUserId" parameterType="QueryUtils" resultType="Integer">
+		<include refid="selectCount"/>
+		WHERE plan_ending_time = #{plan_ending_time} AND plan_userId = #{plan_userId}
+	</select>
+	
 </mapper>

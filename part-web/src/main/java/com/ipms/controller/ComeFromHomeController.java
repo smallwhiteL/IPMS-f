@@ -1,6 +1,11 @@
 package com.ipms.controller;
 
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -111,6 +116,42 @@ public class ComeFromHomeController {
 		model.addAttribute("page", page);
 		
 		return "listLikePlan";
+	}
+	
+	@RequestMapping("/toMonthPage")
+	public String toMonthPage(Model model, HttpServletRequest request) {
+		
+		request.getSession().setAttribute("otherPages", "otherPages");
+		String yearAndMonth = request.getParameter("yearAndMonth");
+		model.addAttribute("yearAndMonth", yearAndMonth);
+		return "month";
+	}
+	
+	@RequestMapping("/ifChangeColor")
+	public void ifChangeColor(HttpServletRequest request, HttpServletResponse response) throws IOException {
+		
+		// 从session获取登录的用户的id
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+		String user_id = loginUser.getUser_id();
+		
+		// 分割获取的参数来得到年月日
+		int year = Integer.parseInt(request.getParameter("date").split("-")[0]);
+		int month = Integer.parseInt(request.getParameter("date").split("-")[1]);
+		int day = Integer.parseInt(request.getParameter("date").split("-")[2]);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.YEAR, year);
+		calendar.set(Calendar.MONTH, month-1);
+		calendar.set(Calendar.DAY_OF_MONTH, day);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String sdfStr = sdf.format(calendar.getTime());
+		
+		QueryUtils queryUtils = new QueryUtils(user_id, sdfStr);
+		int count = comeFromHomeService.findByEndTimeAndUserId(queryUtils);
+		if (count != 0) {
+			response.getWriter().print("yes");
+		} else {
+			response.getWriter().print("no");
+		}
 	}
 	
 }

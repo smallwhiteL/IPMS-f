@@ -135,5 +135,10 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 		}
 		return comeFromHomeMapper.findLikePlans01(queryUtils);
 	}
+
+	@Override
+	public Integer findByEndTimeAndUserId(QueryUtils queryUtils) {
+		return comeFromHomeMapper.findByEndTimeAndUserId(queryUtils);
+	}
 	
 }

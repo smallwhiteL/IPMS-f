@@ -15,8 +15,7 @@
     border-radius: 50%;
 }
 @media (min-width : 768px) {
-    /* 右侧用于添加计划的悬浮窗 */
-    #add-plan-ul{
+	#add-plan-ul{
         position:fixed;
         top:30%;
         right:50px;
@@ -24,44 +23,32 @@
         z-index:400;
         list-style-type: none;
     }
-    
-    .list-all {
-        width: 80%;
-        margin: 10% auto;
+	
+    #month-choice {
+        margin-top: 2%;
+        width: 20%;
+        font-size: 22px;
     }
-    #find-plan {
-        display: inline-block;
-        width:40%;
-        font-size: 20px;
-    }
-    .go {
-        border-radius: 50%;
-        background-color:black;
-        color:white;
-        font-size:20px;
-    }
-    table {
+    #days-table {
+        width: 70%;
+        margin: auto;
         font-size: 20px;
         text-align: center;
     }
-    #find-page {
-        display: inline-block;
-        width:7%;
-        font-size: 20px;
+    #days-table th {
         text-align: center;
     }
-    .describe {
-        text-align:center
+    #days-table td {
+        height: 50px
     }
 }
 @media (min-width : 1200px) {
-    /* 右侧用于添加计划的悬浮窗 */
+	/* 右侧用于添加计划的悬浮窗 */
     #add-plan-ul{
         top:50%;
     }
-    
-    .list-all {
-        width: 80%;
-        margin: auto;
+	
+    #month-choice {
+        width: 15%;
     }
 }

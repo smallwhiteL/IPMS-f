@@ -24,7 +24,8 @@
          <!-- plan find -->
          <div id="go-to-likePage">
              <div class="form-group">
-             	 <form name="redictToLikePage" id="redictForm01" action="findLikeFirst.action" method="post">
+             	 <form name="redictToLikePage" id="redictForm01" action="findLikeFirst.action"
+             	  method="post" style="display: inline">
                  	<input type="text" class="form-control" id="find-plan" name="queryStr" placeholder="输入计划标题">
                	 </form>
                  <button id="go-like" class="go">查找</button>

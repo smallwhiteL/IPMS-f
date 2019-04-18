@@ -19,4 +19,5 @@ public interface ComeFromHomeService {
 	
 	List<Plan> findLikePagePlans(QueryUtils queryUtils);
 	
+	Integer findByEndTimeAndUserId(QueryUtils queryUtils);
 }
