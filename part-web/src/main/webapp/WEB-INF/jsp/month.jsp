@@ -37,6 +37,10 @@
         </li>
     </ul>
     
+    <form name="redictToEndTimePage" id="redictToEndTimePage" action="toEndTimeFirstPage.action" method="post">
+  		<input type="hidden" name="date" id="toEndTimePage">
+ 	</form>
+    
     <!-- 添加任务框 -->
 	<%@ include file="/WEB-INF/jsp/addPlan.jsp" %>
 

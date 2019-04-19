@@ -20,4 +20,8 @@ public interface ComeFromHomeService {
 	List<Plan> findLikePagePlans(QueryUtils queryUtils);
 	
 	Integer findByEndTimeAndUserId(QueryUtils queryUtils);
+	
+	List<Plan> findPlansByEndTime(QueryUtils queryUtils);
+	
+	Page findEndTimePage(QueryUtils queryUtils);
 }

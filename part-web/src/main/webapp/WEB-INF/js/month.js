@@ -58,7 +58,8 @@ $(function(){
         		},
         		success:function(data) {
         			if (data == "yes") {
-        				thisTd.html("<a href='javascript:;' style='color: red' class='dayOfMonth'>"+ text +"</a>");
+        				thisTd.html("<a href='javascript:;' style='color: red' class='dayOfMonth' onclick='redirect(this)'>" 
+        						+ text +"</a>");
         			}
         		}
         	});
@@ -114,25 +115,18 @@ $(function(){
             		type: "post",
             		url: "ifChangeColor.action",
             		data: {
-            			"date" : $("#month-choice").val() + "-" + $(this).text()
+            			"date" : $("#month-choice").val() + "-" + text
             		},
             		success:function(data) {
             			if (data == "yes") {
-            				thisTd.html("<a href='javascript:;' style='color: red' class='dayOfMonth'>"+ text +"</a>");
+            				thisTd.html("<a href='javascript:;' style='color: red' class='dayOfMonth' onclick='redirect(this)'>" 
+            						+ text +"</a>");
             			}
             		}
             	});
             }
         });
     });
-    
-    /**
-     * 点击含有任务的截止日期
-     */
-    $(".dayOfMonth").click(function() {
-    	
-    });
-    
     
     var plan_start_detail = $("#plan-start-detail");
 	var plan_end_detail = $("#plan-end-detail");
@@ -250,3 +244,11 @@ $(function(){
 	});
     
 });
+
+/**
+ * 点击含有任务的截止日期
+ */
+function redirect(obj) {
+	$("#toEndTimePage").val($("#month-choice").val() + "-" + obj.text);
+	document.redictToEndTimePage.submit();
+}

@@ -71,7 +71,7 @@ public class ComeFromHomeController {
 		User loginUser = (User) request.getSession().getAttribute("loginUser");
 		String user_id = loginUser.getUser_id();
 		Object status = request.getSession().getAttribute("status");
-		// 将查询字符串放入session
+		// 获取要查询的字符串并放入session中
 		String queryStr = request.getParameter("queryStr");
 		request.getSession().setAttribute("queryStr", queryStr);
 		
@@ -86,6 +86,7 @@ public class ComeFromHomeController {
 		queryUtils.setStart_row(0);
 		queryUtils.setQueryStr(queryStr);
 		Page page = comeFromHomeService.findLikePage(queryUtils);
+		model.addAttribute("queryStr", queryStr);
 		model.addAttribute("page", page);
 		return "listLikePlan";
 	}
@@ -152,6 +153,63 @@ public class ComeFromHomeController {
 		} else {
 			response.getWriter().print("no");
 		}
+	}
+	
+	@RequestMapping("/toEndTimeFirstPage")
+	public String toEndTimeFirstPage(HttpServletRequest request, Model model) {
+		
+		// 从session获取登录的用户的id
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+		String user_id = loginUser.getUser_id();
+		
+		// 获取日期
+		int year = Integer.parseInt(request.getParameter("date").split("-")[0]);
+		int month = Integer.parseInt(request.getParameter("date").split("-")[1]);
+		int day = Integer.parseInt(request.getParameter("date").split("-")[2]);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.YEAR, year);
+		calendar.set(Calendar.MONTH, month-1);
+		calendar.set(Calendar.DAY_OF_MONTH, day);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String sdfStr = sdf.format(calendar.getTime());
+		QueryUtils queryUtils = new QueryUtils(user_id, sdfStr);
+		queryUtils.setPage_index(1);
+		queryUtils.setStart_row(0);
+		Page page = comeFromHomeService.findEndTimePage(queryUtils);
+		model.addAttribute("date", sdfStr);
+		model.addAttribute("page", page);
+		return "listPanWithEndTime";
+	}
+	
+	@RequestMapping("/toEndTimeOtherPage")
+	public String toEndTimeOtherPage(HttpServletRequest request, Model model) {
+		
+		// 从session获取登录的用户的id
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+		String user_id = loginUser.getUser_id();
+		
+		// 获取日期
+		int year = Integer.parseInt(request.getParameter("date").split("-")[0]);
+		int month = Integer.parseInt(request.getParameter("date").split("-")[1]);
+		int day = Integer.parseInt(request.getParameter("date").split("-")[2]);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.YEAR, year);
+		calendar.set(Calendar.MONTH, month-1);
+		calendar.set(Calendar.DAY_OF_MONTH, day);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String sdfStr = sdf.format(calendar.getTime());
+		
+		// 页号
+		Integer pageNum = Integer.parseInt(request.getParameter("otherPageNum"));
+		
+		QueryUtils queryUtils = new QueryUtils(user_id, sdfStr);
+		queryUtils.setPage_index(pageNum);
+		queryUtils.setStart_row((pageNum - 1) * 10);
+		Page page = comeFromHomeService.findEndTimePage(queryUtils);
+		model.addAttribute("date", sdfStr);
+		model.addAttribute("page", page);
+		
+		return "listPanWithEndTime";
 	}
 	
 }

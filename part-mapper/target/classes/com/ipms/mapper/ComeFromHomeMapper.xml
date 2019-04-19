@@ -54,4 +54,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE plan_ending_time = #{plan_ending_time} AND plan_userId = #{plan_userId}
 	</select>
 	
+	<!-- 根据截止时间和用户ID查询计划 -->
+	<select id="findPlansByEndTime" parameterType="QueryUtils" resultType="Plan">
+		<include refid="selectPlan"/> 
+		WHERE plan_ending_time = #{plan_ending_time} AND plan_userId = #{plan_userId} LIMIT #{start_row},10
+	</select>
+	
 </mapper>

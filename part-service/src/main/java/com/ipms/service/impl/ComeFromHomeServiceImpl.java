@@ -74,7 +74,7 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 		page.setItemsTotal(pageTotal);
 		
 		// 总共多少页
-		Integer pageNumber = pageTotal / 10 + 1;
+		Integer pageNumber = (pageTotal-1) / 10 + 1;
 		page.setPageNumber(pageNumber);
 		// 页号
 		page.setPage_index(queryUtils.getPage_index());
@@ -113,9 +113,8 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 		page.setItemsTotal(pageTotal);
 		
 		// 总共多少页
-		Integer pageNumber = pageTotal / 10 + 1;
+		Integer pageNumber = (pageTotal-1) / 10 + 1;
 		page.setPageNumber(pageNumber);
-		
 		// 页号
 		page.setPage_index(queryUtils.getPage_index());
 		
@@ -137,8 +136,39 @@ public class ComeFromHomeServiceImpl implements ComeFromHomeService {
 	}
 
 	@Override
+	// 通过截止时间和用户ID查询到的计划总数
 	public Integer findByEndTimeAndUserId(QueryUtils queryUtils) {
 		return comeFromHomeMapper.findByEndTimeAndUserId(queryUtils);
 	}
+	
+	@Override
+	public Page findEndTimePage(QueryUtils queryUtils) {
+		// 每页显示的计划数10
+		page.setAmountPerPage(10);
+		
+		// 通过截止时间和用户ID查询到的计划总数
+		Integer pageTotal = findByEndTimeAndUserId(queryUtils);
+		page.setItemsTotal(pageTotal);
+		
+		// 总共多少页
+		Integer pageNumber = (pageTotal-1) / 10 + 1;
+		page.setPageNumber(pageNumber);
+		// 页号
+		page.setPage_index(queryUtils.getPage_index());
+		
+		// 未转为Json格式的Plan
+		List<Plan> plansPage = findPlansByEndTime(queryUtils);
+		// 转为Json格式的Plan
+		List<FormatPlanToJson> formatPlanToJsons = getFormatPlanCommonFunc(plansPage, queryUtils);
+		page.setFormatPlanToJsons(formatPlanToJsons);
+		
+		return page;
+	}
+	
+	@Override
+	public List<Plan> findPlansByEndTime(QueryUtils queryUtils) {
+		return comeFromHomeMapper.findPlansByEndTime(queryUtils);
+	}
+
 	
 }
