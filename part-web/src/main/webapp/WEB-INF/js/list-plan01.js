@@ -2,6 +2,22 @@ var plan_id;
 
 $(function(){
 	
+	// 回到顶部
+	$(window).scroll(function() {
+		if ($(window).scrollTop() > 70) {
+			$('#add-plan-ul li:eq(0)').fadeIn(500);
+		} else {
+			$('#add-plan-ul li:eq(0)').fadeOut(500);
+		}
+	});
+
+    $("#back-to-top").click(function() {
+		$('body,html').animate({
+			scrollTop: 0
+		},
+        500);
+	});
+	
 	// 注销
 	$("#logout").click(function() {
 		var ifLogout = confirm("确认注销？");
