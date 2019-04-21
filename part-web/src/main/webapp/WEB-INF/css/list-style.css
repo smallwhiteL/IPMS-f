@@ -14,6 +14,8 @@
     cursor:pointer;
     border-radius: 50%;
 }
+#back-to-top{background:url(../images/back-to-top.svg) no-repeat;}
+
 @media (min-width : 768px) {
     /* 右侧用于添加计划的悬浮窗 */
     #add-plan-ul{

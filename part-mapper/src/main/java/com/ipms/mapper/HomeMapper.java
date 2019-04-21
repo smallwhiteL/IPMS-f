@@ -3,6 +3,7 @@ package com.ipms.mapper;
 import java.util.List;
 
 import com.ipms.pojo.Plan;
+import com.ipms.pojo.User;
 
 public interface HomeMapper {
 	
@@ -29,5 +30,9 @@ public interface HomeMapper {
 	Plan getPlanById(Integer plan_id);
 	
 	void updatePlan(Plan plan);
+	
+	void updateUser(User user);
+	
+	String getportraitByUserId(String userId);
 	
 }

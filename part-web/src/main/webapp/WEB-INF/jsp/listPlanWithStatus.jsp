@@ -7,6 +7,8 @@
 <title>IPMS-f</title>
 <!-- Own CSS -->
 <link href="${pageContext.request.contextPath}/css/list-style.css" rel="stylesheet">
+<!-- Title Icon -->
+<link href="${pageContext.request.contextPath}/images/plan.jpg" rel="shortcut icon">
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <!-- JQuery (Before Bootstrap) -->

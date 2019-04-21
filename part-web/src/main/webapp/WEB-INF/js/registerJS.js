@@ -288,7 +288,7 @@ function closeAndClear() {
 // 注册验证
 function registerCheck() {
     registerButton.click(function() {
-
+    	
         sexRadioAndBirthday();
         if (usernameFlag && passwordFlag && passwordConfirmFlag && nameFlag && sexFlag && birthdayFlag) {
         	// 提交数据给后台
@@ -299,7 +299,7 @@ function registerCheck() {
         			"register_username" : usernameInput.val(),
         			"register_password" : passwordInput.val(),
         			"register_name" : nameInput.val(),
-        			"register_sex" : $("input[type='radio']").val(),
+        			"register_sex" : $('input:radio:checked').val(),
         			"register_birthday" : birthdayInput.val()
         		},
         		success:function() {

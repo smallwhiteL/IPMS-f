@@ -13,7 +13,10 @@ public class User {
 	private String name;
 	private String sex;
 	private Date birthday;
-	private String Individuality_signature;
+	private String individuality_signature;
+	private String portrait;
+	private String formatBirthday;
+	
 	public String getUser_id() {
 		return user_id;
 	}
@@ -45,16 +48,28 @@ public class User {
 		this.sex = sex;
 	}
 	public String getIndividuality_signature() {
-		return Individuality_signature;
+		return individuality_signature;
 	}
 	public void setIndividuality_signature(String individuality_signature) {
-		Individuality_signature = individuality_signature;
+		this.individuality_signature = individuality_signature;
 	}
 	public Date getBirthday() {
 		return birthday;
 	}
 	public void setBirthday(Date birthday) {
 		this.birthday = birthday;
+	}
+	public String getPortrait() {
+		return portrait;
+	}
+	public void setPortrait(String portrait) {
+		this.portrait = portrait;
+	}
+	public String getFormatBirthday() {
+		return formatBirthday;
+	}
+	public void setFormatBirthday(String formatBirthday) {
+		this.formatBirthday = formatBirthday;
 	}
 	public User() {
 		super();
@@ -72,8 +87,8 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [user_id=" + user_id + ", username=" + username + ", password=" + password + ", name=" + name
-				+ ", sex=" + sex + ", birthday=" + birthday + ", Individuality_signature=" + Individuality_signature
-				+ "]";
+				+ ", sex=" + sex + ", birthday=" + birthday + ", individuality_signature=" + individuality_signature
+				+ ", portrait=" + portrait + ", formatBirthday=" + formatBirthday + "]";
 	}
 
 	

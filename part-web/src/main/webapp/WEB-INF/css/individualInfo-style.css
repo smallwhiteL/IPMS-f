@@ -17,40 +17,40 @@
 #back-to-top{background:url(../images/back-to-top.svg) no-repeat;}
 
 @media (min-width : 768px) {
-	#add-plan-ul{
+    /* 右侧用于添加计划的悬浮窗 */
+    #add-plan-ul{
         position:fixed;
-        top:30%;
+        top:45%;
         right:50px;
         width:15px;
         z-index:400;
         list-style-type: none;
     }
-	
-    #month-choice {
-        margin-top: 2%;
-        width: 20%;
-        font-size: 22px;
+
+    #info-form {
+        margin-left: 20%;
     }
-    #days-table {
-        width: 70%;
-        margin: auto;
-        font-size: 20px;
-        text-align: center;
+
+    #portrait {
+        margin-left:11.8%
     }
-    #days-table th {
-        text-align: center;
-    }
-    #days-table td {
-        height: 50px
+
+    .header-simulation {
+        height: 200px;
+        background-color: rgb(91, 215, 253);
     }
 }
 @media (min-width : 1200px) {
-	/* 右侧用于添加计划的悬浮窗 */
+    /* 右侧用于添加计划的悬浮窗高度 */
     #add-plan-ul{
-        top:50%;
+        top:55%;
     }
-	
-    #month-choice {
-        width: 15%;
+
+    #portrait {
+        margin-left:12.8%
+    }
+
+    .header-simulation {
+        height: 113.15px;
     }
 }

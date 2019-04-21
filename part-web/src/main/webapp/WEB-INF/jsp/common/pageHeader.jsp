@@ -13,19 +13,37 @@
 	<!-- Header -->
     <div style="background-color:#E5E5E5" class="headerHeightAjustment">
         <!-- welcome and portrait -->
-        <div class="col-xs-4">
-            <div class="col-xs-8 left-part-welcome">
+        <div class="col-xs-5 col-lg-4">
+            <div class="col-xs-7 col-lg-8 left-part-welcome">
 		        <c:if test="${not empty loginUser}">
-	               	欢迎您!<br>
-	               	${loginUser.name}
+		        	<c:if test="${empty otherPages}">
+		               	欢迎您!<br>
+		               	<a href="toIndividualInfoPage.action">${loginUser.name}</a>
+	               	</c:if>
+	               	<c:if test="${not empty otherPages}">
+		               	欢迎您!<br>
+		               	<a href="../home/toIndividualInfoPage.action">${loginUser.name}</a>
+	               	</c:if>
 		        </c:if>
             </div>
-            <div class="col-xs-4 left-part-portrait">
-                
+            <div class="col-xs-5 col-lg-4 left-part-portrait">
+                <c:if test="${not empty loginUser}">
+                	<c:if test="${loginUser.portrait == '' || loginUser.portrait == null}">
+                		<c:if test="${loginUser.sex == '女'}">
+                			<img src="${pageContext.request.contextPath}/images/curlGirl.svg" id="portrait-head" class="img-circle">
+                		</c:if>
+                		<c:if test="${loginUser.sex == '男'}">
+                			<img src="${pageContext.request.contextPath}/images/onePunch.svg" id="portrait-head" class="img-circle">
+                		</c:if>
+                	</c:if>
+                	<c:if test="${loginUser.portrait != '' && loginUser.portrait != null}">
+                		<img src="${pageContext.request.contextPath}/pic/${loginUser.portrait}" id="portrait-head" class="img-circle">
+                	</c:if>
+                </c:if>
             </div>
         </div>
         <!-- logo -->
-        <div class="col-xs-4 logo-part">
+        <div class="col-xs-3 col-lg-4 logo-part">
             IPMS<br>
            	个人计划管理系统
         </div>

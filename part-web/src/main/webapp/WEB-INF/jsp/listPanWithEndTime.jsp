@@ -7,6 +7,8 @@
 <title>IPMS-f</title>
 <!-- Own CSS -->
 <link href="${pageContext.request.contextPath}/css/list-style.css" rel="stylesheet">
+<!-- Title Icon -->
+<link href="${pageContext.request.contextPath}/images/plan.jpg" rel="shortcut icon">
 <!-- Bootstrap CSS -->
 <link href="${pageContext.request.contextPath}/css/bootstrap.css" rel="stylesheet">
 <!-- JQuery (Before Bootstrap) -->
@@ -83,9 +85,6 @@
          </nav>
      </div>
 
-	 <!-- 任务详情及修改框 -->
-	 <%@ include file="/WEB-INF/jsp/plan-detailAndEdit.jsp" %>
-
      <!-- floating window to add plan -->
      <ul id="add-plan-ul">
          <li style="display:none;"><button id="back-to-top" style="border:none"></button></li>
@@ -95,6 +94,9 @@
              </a>
          </li>
      </ul>
+     
+	 <!-- 任务详情及修改框 -->
+	 <%@ include file="/WEB-INF/jsp/plan-detailAndEdit.jsp" %>
      
      <!-- 添加任务框 -->
    	 <%@ include file="/WEB-INF/jsp/addPlan.jsp" %>

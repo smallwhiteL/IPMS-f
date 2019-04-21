@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.ipms.mapper.HomeMapper;
 import com.ipms.pojo.Plan;
+import com.ipms.pojo.User;
 import com.ipms.service.HomeService;
 
 @Service
@@ -81,6 +82,17 @@ public class HomeServiceImpl implements HomeService {
 	@Transactional(isolation=Isolation.REPEATABLE_READ, propagation=Propagation.REQUIRED, readOnly=false)
 	public void updatePlan(Plan plan) {
 		homeMapper.updatePlan(plan);
+	}
+
+	@Override
+	@Transactional(isolation=Isolation.REPEATABLE_READ, propagation=Propagation.REQUIRED, readOnly=false)
+	public void updateUser(User user) {
+		homeMapper.updateUser(user);
+	}
+
+	@Override
+	public String getportraitByUserId(String userId) {
+		return homeMapper.getportraitByUserId(userId);
 	}
 
 }

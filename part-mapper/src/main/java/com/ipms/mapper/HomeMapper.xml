@@ -75,4 +75,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	 	WHERE plan_id = #{plan_id}
 	</update>
 	
+	<!-- 修改用户 -->
+	<update id="updateUser" parameterType="User">
+		UPDATE ipms_user SET
+		 name = #{name}, sex = #{sex}, birthday = #{formatBirthday},
+		 Individuality_signature = #{individuality_signature}
+		 <if test="portrait != null and portrait != ''">
+			 , portrait = #{portrait} 
+		 </if>
+	 	WHERE user_id = #{user_id}
+	</update>
+	
+	<!-- 根据用户ID查询一次用户头像 -->
+	<select id="getportraitByUserId" parameterType="String" resultType="String">
+		SELECT portrait FROM `ipms_user` WHERE user_id = #{value}
+	</select>
+	
+	
 </mapper>

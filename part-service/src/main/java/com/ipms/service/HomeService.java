@@ -3,6 +3,7 @@ package com.ipms.service;
 import java.util.List;
 
 import com.ipms.pojo.Plan;
+import com.ipms.pojo.User;
 
 public interface HomeService {
 	
@@ -29,5 +30,10 @@ public interface HomeService {
 	Plan getPlanById(Integer plan_id);
 	
 	void updatePlan(Plan plan);
-
+	
+	void updateUser(User user);
+	
+	// 根据用户ID查询头像路径
+	String getportraitByUserId(String userId);
+	
 }

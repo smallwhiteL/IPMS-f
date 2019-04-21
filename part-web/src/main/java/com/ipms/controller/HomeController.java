@@ -1,16 +1,22 @@
 package com.ipms.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.ipms.pojo.FormatPlanToJson;
 import com.ipms.pojo.Plan;
@@ -140,5 +146,71 @@ public class HomeController {
 		request.getSession().setAttribute("otherPages", "otherPages");
 		ModelAndView modelAndView = new ModelAndView("redirect:../fromHome/withStatusFirst");
 		return modelAndView;
+	}
+	
+	// 去到个人信息页面
+	@RequestMapping("/toIndividualInfoPage")
+	public String toIndividualInfoPage(Model model,HttpServletRequest request) {
+		
+		User loginUser = (User) request.getSession().getAttribute("loginUser");
+		request.getSession().setAttribute("otherPages", "otherPages");
+		// 格式化生日
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		String formatBirthday = sdf.format(loginUser.getBirthday());
+		loginUser.setFormatBirthday(formatBirthday);
+		
+		String portrait = homeService.getportraitByUserId(loginUser.getUser_id());
+		loginUser.setPortrait(portrait);
+		
+		request.getSession().setAttribute("loginUser", loginUser);
+		model.addAttribute("user", loginUser);
+		return "individualInfo";
+	}
+	
+	// 修改信息
+	@RequestMapping("/updateInfo")
+	public String updateInfo(Model model,HttpServletRequest request, @RequestParam(value="file",required=false)MultipartFile file) throws IllegalStateException, IOException {
+		
+		User user = (User) request.getSession().getAttribute("loginUser");
+		
+		// 上传图片-----
+		// 保存至本地F:\\upload
+		String portraitPath = "F:\\upload";
+		// 获取原始图片后缀名
+		String suffix = file.getOriginalFilename();
+		
+		if (suffix != null && suffix != "") {
+			// 为防止上传图片名重复, 使用UUID重新给文件命名
+			String portraitName = UUID.randomUUID().toString().replaceAll("-", "") + suffix;
+			// 新建带全路径的图片对象
+			File portraitFile = new File(portraitPath, portraitName);
+			// 利用MultipartFile类的transferTo(File file)方法将文件上传至本地路径
+			file.transferTo(portraitFile);
+			user.setPortrait(portraitName);
+		}
+		
+		// 从前端获取的除图片外的其他数据
+		user.setName(request.getParameter("inputName"));
+		user.setSex(request.getParameter("sex"));
+		// 格式化生日
+		// 获取日期
+		int year = Integer.parseInt(request.getParameter("inputBirthday").split("-")[0]);
+		int month = Integer.parseInt(request.getParameter("inputBirthday").split("-")[1]);
+		int day = Integer.parseInt(request.getParameter("inputBirthday").split("-")[2]);
+		Calendar calendar = Calendar.getInstance();
+		calendar.set(Calendar.YEAR, year);
+		calendar.set(Calendar.MONTH, month-1);
+		calendar.set(Calendar.DAY_OF_MONTH, day);
+		
+		user.setBirthday(calendar.getTime());
+		user.setFormatBirthday(request.getParameter("inputBirthday"));
+		user.setIndividuality_signature(request.getParameter("inputSignature"));
+		// 更新用户信息
+		homeService.updateUser(user);
+		// 更新session中的User
+		request.getSession().setAttribute("loginUser", user);
+		model.addAttribute("user", user);
+		
+		return "individualInfo";
 	}
 }

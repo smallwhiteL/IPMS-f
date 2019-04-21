@@ -22,6 +22,15 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
+	<!-- 配置文件上传解析器 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">    
+    <property name="defaultEncoding" value="utf-8"/>    
+    <!-- 最大内存大小, 设置为5M -->    
+    <property name="maxInMemorySize" value="5120"/>    
+    <!-- 最大文件大小, 设置为10M, -1为不限制大小 -->    
+    <property name="maxUploadSize" value="10240000"/>    
+    </bean> 
+	
 	<!-- 资源映射 -->
 	<mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
 	<mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
