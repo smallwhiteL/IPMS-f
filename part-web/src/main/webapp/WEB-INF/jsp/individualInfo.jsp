@@ -115,8 +115,9 @@
 
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default" id="update" style="font-weight: bold; 
+            <button type="button" class="btn btn-default" id="update" style="font-weight: bold; 
             font-size: 20px; color: white; background-color: black">保存</button>
+            <span id="warn" style="color:red"></span>
           </div>
         </div>
     </form>

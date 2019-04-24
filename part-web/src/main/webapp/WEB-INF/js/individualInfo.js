@@ -28,9 +28,14 @@ $(function() {
 		}
 	});
     
-	// 注销
+	// 更新
 	$("#update").click(function() {
-		alert("更新成功!");
+		if ($("#inputName").val() == "" || $("#inputBirthday").val() == "") {
+			alert("姓名和出生日期不能为空!");
+		} else {
+			$("#info-form").submit();
+			alert("更新成功!");
+		}
 	});
 	
 	var plan_start_detail = $("#plan-start-detail");
