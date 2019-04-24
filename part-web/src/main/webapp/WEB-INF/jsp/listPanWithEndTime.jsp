@@ -28,7 +28,7 @@
             <div>
                 <h3>
                 	<span class="label label-warning" style="display:inline-block">${date}</span>
-                	<br>您在今天需要完成的任务有:
+                	<br>您在此日需要完成的任务有:
                	</h3>
             </div>
          </div>

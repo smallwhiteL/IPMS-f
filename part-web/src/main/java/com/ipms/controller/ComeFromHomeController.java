@@ -40,6 +40,10 @@ public class ComeFromHomeController {
 		QueryUtils queryUtils = new QueryUtils(plan_status, user_id, 1, 0);
 		// 通过查询工具类查询分页信息
 		Page page = comeFromHomeService.findPage(queryUtils);
+		// 判断当计划为0时回到主页
+		if (page.getItemsTotal() == 0) {
+			return "redirect:/home/homePage";
+		}
 		model.addAttribute("page", page);
 		return "listPlanWithStatus";
 	}
@@ -57,6 +61,10 @@ public class ComeFromHomeController {
 		QueryUtils queryUtils = new QueryUtils(plan_status, user_id, pageNum, (pageNum - 1) * 10);
 		// 通过查询工具类查询分页信息
 		Page page = comeFromHomeService.findPage(queryUtils);
+		// 判断当计划为0时回到主页
+		if (page.getItemsTotal() == 0) {
+			return "redirect:/home/homePage";
+		}
 		model.addAttribute("page", page);
 		return "listPlanWithStatus";
 	}
@@ -86,6 +94,10 @@ public class ComeFromHomeController {
 		queryUtils.setStart_row(0);
 		queryUtils.setQueryStr(queryStr);
 		Page page = comeFromHomeService.findLikePage(queryUtils);
+		// 判断当计划为0时回到主页
+		if (page.getItemsTotal() == 0) {
+			return "redirect:/home/homePage";
+		}
 		model.addAttribute("queryStr", queryStr);
 		model.addAttribute("page", page);
 		return "listLikePlan";
@@ -114,6 +126,10 @@ public class ComeFromHomeController {
 		queryUtils.setStart_row((pageNum - 1) * 10);
 		queryUtils.setQueryStr(queryStr);
 		Page page = comeFromHomeService.findLikePage(queryUtils);
+		// 判断当计划为0时回到主页
+		if (page.getItemsTotal() == 0) {
+			return "redirect:/home/homePage";
+		}
 		model.addAttribute("page", page);
 		
 		return "listLikePlan";
@@ -176,6 +192,10 @@ public class ComeFromHomeController {
 		queryUtils.setPage_index(1);
 		queryUtils.setStart_row(0);
 		Page page = comeFromHomeService.findEndTimePage(queryUtils);
+		// 判断当计划为0时回到主页
+		if (page.getItemsTotal() == 0) {
+			return "redirect:/home/homePage";
+		}
 		model.addAttribute("date", sdfStr);
 		model.addAttribute("page", page);
 		return "listPanWithEndTime";
@@ -206,6 +226,10 @@ public class ComeFromHomeController {
 		queryUtils.setPage_index(pageNum);
 		queryUtils.setStart_row((pageNum - 1) * 10);
 		Page page = comeFromHomeService.findEndTimePage(queryUtils);
+		// 判断当计划为0时回到主页
+		if (page.getItemsTotal() == 0) {
+			return "redirect:/home/homePage";
+		}
 		model.addAttribute("date", sdfStr);
 		model.addAttribute("page", page);
 		
