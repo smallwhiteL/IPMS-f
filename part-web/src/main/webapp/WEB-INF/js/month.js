@@ -34,7 +34,7 @@ $(function(){
      */
     var year = parseInt($("#month-choice").val().split("-")[0]);
     var month = parseInt($("#month-choice").val().split("-")[1])-1;
-    var week; // 代表周几-1, 表格设有35个单元格, 用来将每月一号之前的日子和每月最后一天之后的日子添加空白日期
+    var week; // 代表周几-1, 表格设有42个单元格, 用来将每月一号之前的日子和每月最后一天之后的日子添加空白日期
     var days = new Date(year, month+1, 0).getDate(); // 代表一个月有几天
     var dayOfWeek = new Date(year, month, 1).getDay(); // 每月第一天是星期几, 这里与上面不同是因为getDay的周几从0开始,月份也从0开始
     if( dayOfWeek == 0 ) week = 6;
