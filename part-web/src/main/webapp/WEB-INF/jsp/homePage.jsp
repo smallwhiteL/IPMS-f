@@ -36,7 +36,7 @@
 	<!-- Main Content -->
     <div class="plan-preview">
         <!-- Preview head -->
-        <div class="preview-head">直至今天,您计划情况如下:</div>
+        <div class="preview-head">直至今天,您的计划情况如下:</div>
         <!-- toDo -->
         <div id="include-show">
             <label class="toDo">

@@ -43,57 +43,102 @@ $(function() {
 	var plan_start = $("#plan-start");
 	var plan_end = $("#plan-end");
     
-    // 添加任务
-	$("#add").click(function(){
+	// 添加任务
+    $("#add").click(function(){
         
         var add_start_time = new Date(Date.parse(plan_start.val()));
         var add_end_time = new Date(Date.parse(plan_end.val()));
         var today = new Date();
         var plan_status;
-
+        
         if ( $("#plan-title").val() == "" || plan_start.val() == "" || plan_end.val() == "" ) {
             $("#add-tips").html("标题及起始时间不能为空!");
         } else {
             if ( add_start_time <= add_end_time ) {
                 // 根据今天判断状态,若小于开始时间默认为-未开始,若在开始时间和截止时间之间默认为-进行中,若大于截止时间根据以下情况判断状态
                 if ( today > add_end_time ) { // 4.10 15:54 > 4.10 8:00
-                    if ( $("#add-done-status").prop("checked") || $("#add-failed-status").prop("checked") ) {
-                    	plan_status = $("#add-done-status").prop("checked")?"3":"4";
-                    	$.ajax({
-                    		type: "post",
-                    		url: "../home/addPlan.action",
-                    		data: {
-                    			"plan-title" : $("#plan-title").val(),
-                    			"plan-describe" : $("#plan-describe").val(),
-                    			"plan-start-date" : plan_start.val(),
-                    			"plan-end-date" : plan_end.val(),
-                    			"plan-status" : plan_status
-                    		}
-                    	});
-                        alert("添加成功!");
-                        location.reload(true); // 由于窗口重新加载所以清空模态框的消息不用手动敲出来
-    
-                    }else {
-                        if ( today.getDate() > add_end_time.getDate() ) { // 这个判断出现的原因是Date.parse()转换过来的日期默认为 8:00 am
+                	if (today.getYear() == add_end_time.getYear()) { // 判断年份
+                		if(today.getMonth() == add_end_time.getMonth()) { // 判断月份
+		                    if ( $("#add-done-status").prop("checked") || $("#add-failed-status").prop("checked") ) {
+		                    	plan_status = $("#add-done-status").prop("checked")?"3":"4";
+		                    	$.ajax({
+		                    		type: "post",
+		                    		url: "../home/addPlan.action",
+		                    		data: {
+		                    			"plan-title" : $("#plan-title").val(),
+		                    			"plan-describe" : $("#plan-describe").val(),
+		                    			"plan-start-date" : plan_start.val(),
+		                    			"plan-end-date" : plan_end.val(),
+		                    			"plan-status" : plan_status
+		                    		}
+		                    	});
+		                        alert("添加成功!");
+		                        location.reload(true); // 由于窗口重新加载所以清空模态框的消息不用手动敲出来
+		    
+		                    }else {
+		                        if ( today.getDate() > add_end_time.getDate() ) { // 这个判断出现的原因是Date.parse()转换过来的日期默认为 8:00 am
+		                            $("#add-tips").html("今天在截止时间之后,请选择状态!");
+		                        } else { // 4.10 = 4.10
+		                        	plan_status = "2";
+		                        	$.ajax({
+		                        		type: "post",
+		                        		url: "../home/addPlan.action",
+		                        		data: {
+		                        			"plan-title" : $("#plan-title").val(),
+		                        			"plan-describe" : $("#plan-describe").val(),
+		                        			"plan-start-date" : plan_start.val(),
+		                        			"plan-end-date" : plan_end.val(),
+		                        			"plan-status" : plan_status
+		                        		}
+		                        	});
+		                            alert("添加成功!");
+		                            location.reload(true);
+		                        }
+		                        
+		                    }
+                		} else {
+                			if ( $("#add-done-status").prop("checked") || $("#add-failed-status").prop("checked") ) {
+    	                    	plan_status = $("#add-done-status").prop("checked")?"3":"4";
+    	                    	$.ajax({
+    	                    		type: "post",
+    	                    		url: "../home/addPlan.action",
+    	                    		data: {
+    	                    			"plan-title" : $("#plan-title").val(),
+    	                    			"plan-describe" : $("#plan-describe").val(),
+    	                    			"plan-start-date" : plan_start.val(),
+    	                    			"plan-end-date" : plan_end.val(),
+    	                    			"plan-status" : plan_status
+    	                    		}
+    	                    	});
+    	                        alert("添加成功!");
+    	                        location.reload(true); // 由于窗口重新加载所以清空模态框的消息不用手动敲出来
+    	    
+    	                    }else {
+                                $("#add-tips").html("今天在截止时间之后,请选择状态!");
+    	                    }
+                		}
+                	}
+                	else {
+                		if ( $("#add-done-status").prop("checked") || $("#add-failed-status").prop("checked") ) {
+	                    	plan_status = $("#add-done-status").prop("checked")?"3":"4";
+	                    	$.ajax({
+	                    		type: "post",
+	                    		url: "../home/addPlan.action",
+	                    		data: {
+	                    			"plan-title" : $("#plan-title").val(),
+	                    			"plan-describe" : $("#plan-describe").val(),
+	                    			"plan-start-date" : plan_start.val(),
+	                    			"plan-end-date" : plan_end.val(),
+	                    			"plan-status" : plan_status
+	                    		}
+	                    	});
+	                        alert("添加成功!");
+	                        location.reload(true); // 由于窗口重新加载所以清空模态框的消息不用手动敲出来
+	    
+	                    }else {
                             $("#add-tips").html("今天在截止时间之后,请选择状态!");
-                        } else { // 4.10 = 4.10
-                        	plan_status = "2";
-                        	$.ajax({
-                        		type: "post",
-                        		url: "../home/addPlan.action",
-                        		data: {
-                        			"plan-title" : $("#plan-title").val(),
-                        			"plan-describe" : $("#plan-describe").val(),
-                        			"plan-start-date" : plan_start.val(),
-                        			"plan-end-date" : plan_end.val(),
-                        			"plan-status" : plan_status
-                        		}
-                        	});
-                            alert("添加成功!");
-                            location.reload(true);
-                        }
-                        
-                    }
+	                    }
+                	}
                 }else {
             		plan_status = today < add_start_time ? "1":"2";
                 	$.ajax({
@@ -129,16 +174,25 @@ $(function() {
     });
 	
 	// 判断今天和截止日期的大小,确定是否显示状态按钮,而修改则不需要,因为修改操作一定存在状态
-	$("#plan-end").on("input propertychange", function () {
+    $("#plan-end").on("input propertychange", function () {
         var add_end_time = new Date(Date.parse(plan_end.val()));
         var today = new Date();
 
         if (today > add_end_time) {
-            if ( today.getDate() > add_end_time.getDate() ) { // 这个判断出现的原因是Date.parse()转换过来的日期默认为 8:00 am
-                $(".status-list").css({"display": "block"});
-            } else {
-                $(".status-list").css({"display": "none"});
-            }
+        	if (today.getYear() == add_end_time.getYear()) { // 判断年份
+        		if(today.getMonth() == add_end_time.getMonth()) { // 判断月份
+        			if ( today.getDate() > add_end_time.getDate() ) { // 这个判断出现的原因是Date.parse()转换过来的日期默认为 8:00 am
+        				$(".status-list").css({"display": "block"});
+        			} else {
+        				$(".status-list").css({"display": "none"});
+        			}
+        		}else {
+            		$(".status-list").css({"display": "block"});
+            	}
+        	}
+        	else {
+        		$(".status-list").css({"display": "block"});
+        	}
         } else {
             $(".status-list").css({"display": "none"});
         }
